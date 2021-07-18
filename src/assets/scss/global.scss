@@ -1,12 +1,18 @@
 body {
+  width: 100%;
+  max-width: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 
   text-decoration: none;
 }
 
 html {
   box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 *,
 *::before,
@@ -14,10 +20,14 @@ html {
   box-sizing: inherit;
 }
 
-.root {
+#root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.main {
+  flex-grow: 1;
 }
 
 .visually-hidden {
@@ -31,7 +41,8 @@ html {
 }
 
 .container {
-  max-width: 1200px;
+  min-width: $width-mobile;
+  max-width: $width-desktop;
   margin-right: auto;
   margin-left: auto;
   padding-right: 15px;
