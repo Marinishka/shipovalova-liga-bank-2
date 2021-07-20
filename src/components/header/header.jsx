@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 import login from './../../assets/img/icons/icon-login.svg';
+import {ScreenWidth} from './../../const.js';
 
 const Header = () => {
   const headerNav = useRef(null);
@@ -14,7 +15,17 @@ const Header = () => {
     <div className="header__container container">
       <div className="header__logo-container">
         <a className="header__link-logo" href="/">
-          <img className="header__logo" width="149px" height="25px" src="./img/logo.png" alt="Логотип Лига Банк"></img>
+          <picture>
+            <source media={`(min-width: ${ScreenWidth.TABLET})`} srcSet="./img/logo-tablet.png"></source>
+            <source media={`(min-width: ${ScreenWidth.DESKTOP})`} srcSet="./img/logo-desktop.png"></source>
+            <img className="header__logo" width="115" height="17" src="./img/logo-mobile.png" alt="Логотип Лига Банк"></img>
+          </picture>
+        </a>
+      </div>
+      <div className="header__user header-user">
+        <a className="header-user__link" href="/">
+          <img className="header-user__icon" width="14" height="16" src={login} alt="Войти в Интернет-банк"></img>
+          <span className="header-user__label">Войти в Интернет-банк</span>
         </a>
       </div>
       <nav ref={headerNav} className="header__nav header-nav">
@@ -32,12 +43,6 @@ const Header = () => {
             <a className="header-nav-list__link" href="/">Контакты</a>
           </li>
         </ul>
-        <div className="header-nav__user header-nav-user">
-          <a className="header-nav-user__link" href="/">
-            <img className="header-nav-user__icon" width="20px" height="22px" src={login} alt="Иконка войти"></img>
-          Войти в Интернет-банк
-          </a>
-        </div>
       </nav>
       <button ref={toggle} className="header__toggle" onClick={onToggleClick}>
         <div></div>

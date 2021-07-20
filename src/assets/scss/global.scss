@@ -47,6 +47,14 @@ html {
   margin-left: auto;
   padding-right: 15px;
   padding-left: 15px;
+  @media (min-width: $width-tablet) {
+    padding-right: 45px;
+    padding-left: 45px;
+  }
+  @media (min-width: $width-desktop) {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 }
 
 .link {
