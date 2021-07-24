@@ -1,0 +1,345 @@
+.tabs {
+  position: relative;
+  @media (min-width: $width-desktop) {
+    padding-top: 60px;
+  }
+}
+
+.tabs__list {
+  position: absolute;
+  bottom: 6px;
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  @media (min-width: $width-tablet) {
+    bottom: 11px;
+  }
+  @media (min-width: $width-desktop) {
+    position: relative;
+    bottom: 0;
+
+    max-width: $width-desktop;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+.tabs__btn {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+
+  background-color: $color-dots;
+  border: none;
+  border-radius: 50%;
+  @media (min-width: $width-tablet) {
+    width: 8px;
+    height: 8px;
+  }
+  @media (min-width: $width-desktop) {
+    position: relative;
+
+    width: 293px;
+    height: auto;
+    height: 100%;
+    padding: 30px 15px 30px 15px;
+
+    vertical-align: middle;
+    text-align: start;
+    text-align: center;
+
+    background-color: white;
+    border-radius: 0;
+  }
+}
+
+.tabs__icon {
+  display: none;
+  @media (min-width: $width-desktop) {
+    display: inline-block;
+    margin-right: 10px;
+
+    vertical-align: middle;
+  }
+}
+
+.tabs__item:not(:last-child) {
+  margin-right: 6px;
+  @media (min-width: $width-tablet) {
+    margin-right: 8px;
+  }
+  @media (min-width: $width-desktop) {
+    margin-right: 0;
+  }
+}
+
+.tabs__btn--active {
+  background-color: $color-dot-active-dark;
+  @media (min-width: $width-desktop) {
+    background-color: $bg-block;
+  }
+}
+
+.tabs__title {
+  display: none;
+  @media (min-width: $width-desktop) {
+    display: inline-block;
+
+    font-size: 18px;
+    line-height: 1.2;
+    font-family: "Roboto-Medium", "Arial", sans-serif;
+    vertical-align: middle;
+  }
+}
+
+.tabs__container {
+  @media (min-width: $width-desktop) {
+    max-width: $width-desktop;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+.tab-item {
+  min-height: 362px;
+  padding: 55px 60px 60px 14px;
+  padding-top: 55px;
+  padding-right: 60px;
+  padding-bottom: 60px;
+
+  background-color: $bg-block;
+
+  @media (min-width: $width-tablet) {
+    min-height: 380px;
+    padding: 54px 360px 60px 45px;
+  }
+  @media (min-width: $width-desktop) {
+    min-height: 410px;
+    padding-right: 679px;
+    padding-left: 70px;
+  }
+}
+
+.tab-item--contribution {
+  background-image: url("./../../assets/img/piggybank-mobile.png");
+  background-repeat: no-repeat;
+  background-position: right 98px;
+  background-size: 87px 113px;
+  @media (min-width: $width-tablet) {
+    background-image: url("./../../assets/img/piggybank-tablet.png");
+    background-position: 434px 60px;
+    background-size: 289px 260px;
+  }
+  @media (min-width: $width-desktop) {
+    background-image: url("./../../assets/img/piggybank-desktop.png");
+    background-position: 595px 59px;
+    background-size: 440px 290px;
+  }
+}
+
+.tab-item--contribution .tab-item__title {
+  @media (min-width: $width-tablet) {
+    margin-right: 50px;
+  }
+}
+
+.tab-item--credits {
+  background-image: url("./../../assets/img/car-mobile.png");
+  background-repeat: no-repeat;
+  background-position: right 98px;
+  background-size: 87px 113px;
+  @media (min-width: $width-tablet) {
+    background-image: url("./../../assets/img/car-tablet.png");
+    background-position: 434px 60px;
+    background-size: 289px 260px;
+  }
+  @media (min-width: $width-desktop) {
+    background-image: url("./../../assets/img/car-desktop.png");
+    background-position: 595px 59px;
+    background-size: 440px 290px;
+  }
+}
+
+.tab-item--credits .tab-item__title {
+  margin-right: 60px;
+}
+
+.tab-item--insurance {
+  background-image: url("./../../assets/img/lock-mobile.png");
+  background-repeat: no-repeat;
+  background-position: right 98px;
+  background-size: 87px 113px;
+  @media (min-width: $width-tablet) {
+    background-image: url("./../../assets/img/lock-tablet.png");
+    background-position: 434px 60px;
+    background-size: 289px 260px;
+  }
+  @media (min-width: $width-desktop) {
+    background-image: url("./../../assets/img/lock-desktop.png");
+    background-position: 595px 59px;
+    background-size: 440px 290px;
+  }
+}
+
+.tab-item--insurance .tab-item__title {
+  margin-right: 30px;
+  @media (min-width: $width-tablet) {
+    margin-right: 80px;
+  }
+}
+
+.tab-item--online-services {
+  background-image: url("./../../assets/img/mobile-mobile.png");
+  background-repeat: no-repeat;
+  background-position: right 98px;
+  background-size: 87px 113px;
+  @media (min-width: $width-tablet) {
+    background-image: url("./../../assets/img/mobile-tablet.png");
+    background-position: 434px 60px;
+    background-size: 289px 260px;
+  }
+  @media (min-width: $width-desktop) {
+    background-image: url("./../../assets/img/mobile-desktop.png");
+    background-position: 595px 59px;
+    background-size: 440px 290px;
+  }
+}
+
+.tab-item--online-services .tab-item__title {
+  margin-right: 40px;
+  @media (min-width: $width-tablet) {
+    margin-right: 0;
+  }
+}
+
+.tab-item__title {
+  margin-top: 0;
+  margin-bottom: 20px;
+
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Roboto-Medium", "Arial", sans-serif;
+  color: $text-color;
+  @media (min-width: $width-tablet) {
+    margin-bottom: 25px;
+
+    font-size: 18px;
+  }
+  @media (min-width: $width-desktop) {
+    margin-bottom: 29px;
+
+    font-size: 22px;
+  }
+}
+
+.tab-item__features {
+  margin-top: 0;
+  margin-bottom: 27px;
+  padding-left: 0;
+
+  list-style: none;
+  @media (min-width: $width-tablet) {
+    margin-bottom: 30px;
+  }
+  @media (min-width: $width-desktop) {
+    margin-bottom: 36px;
+  }
+}
+
+.tab-item__feature {
+  position: relative;
+
+  padding-left: 15px;
+
+  font-size: 14px;
+  line-height: 1.2;
+  color: $text-color;
+  letter-spacing: 0.01em;
+  @media (min-width: $width-tablet) {
+    padding-left: 20px;
+
+    font-size: 16px;
+  }
+  @media (min-width: $width-tablet) {
+    font-size: 18px;
+  }
+}
+
+.tab-item__feature::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: -1px;
+
+  display: block;
+  width: 10px;
+  height: 8px;
+
+  background-image: url("./../../assets/img/icons/icon-check-mark.svg");
+  background-repeat: no-repeat;
+  background-size: 10px 8px;
+}
+
+.tab-item__feature:not(:last-child) {
+  margin-bottom: 14px;
+  @media (min-width: $width-tablet) {
+    margin-bottom: 18px;
+  }
+  @media (min-width: $width-desktop) {
+    margin-bottom: 16px;
+  }
+}
+
+.tab-item__link {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  padding-left: 5px;
+
+  font-size: 14px;
+  line-height: 1.2;
+  font-family: "Roboto-Medium", "Arial", sans-serif;
+  text-align: center;
+  color: $bg-block;
+  text-decoration: none;
+
+  background-color: $main-color;
+  border-radius: 4px;
+  @media (min-width: $width-tablet) {
+    width: 198px;
+    padding: 14px;
+
+    font-size: 16px;
+  }
+  @media (min-width: $width-desktop) {
+    padding: 16px;
+  }
+}
+
+.tab-item__link-in-text {
+  font-weight: 600;
+  color: $text-color;
+}
+
+.tab-item__text {
+  display: inline-block;
+  margin-right: 30px;
+
+  font-size: 15px;
+  line-height: 1.3;
+  font-family: "Roboto-Regular", "Arial", sans-serif;
+  @media (min-width: $width-tablet) {
+    margin-right: 40px;
+
+    font-size: 16px;
+  }
+}
