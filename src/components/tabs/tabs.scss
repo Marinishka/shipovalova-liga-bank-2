@@ -60,6 +60,11 @@
   }
 }
 
+.tabs__btn:hover,
+.tabs__btn:focus {
+  background-color: $bg-block;
+}
+
 .tabs__icon {
   display: none;
   @media (min-width: $width-desktop) {
@@ -323,6 +328,17 @@
   @media (min-width: $width-desktop) {
     padding: 16px;
   }
+}
+
+.tab-item__link:hover,
+.tab-item__link:focus {
+  opacity: 0.9;
+}
+
+.tab-item__link:active {
+  color: darken($color: $bg-block, $amount: 10%);
+
+  background-color: darken($color: $main-color, $amount: 10%);
 }
 
 .tab-item__link-in-text {

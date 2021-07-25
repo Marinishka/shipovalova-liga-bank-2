@@ -191,11 +191,13 @@
 
 .slider__link:hover,
 .slider__link:focus {
-  color: $halfhidden;
+  opacity: 0.9;
 }
 
 .slider__link:active {
-  color: $main-color;
+  color: darken($color: $bg-block, $amount: 10%);
+
+  background-color: darken($color: $main-color, $amount: 10%);
 }
 
 .slider__card {
