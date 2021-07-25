@@ -1,0 +1,56 @@
+.map {
+  padding-bottom: 60px;
+  @media (min-width: $width-tablet) {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 45px;
+    padding-bottom: 80px;
+    padding-left: 45px;
+  }
+  @media (min-width: $width-desktop) {
+    max-width: $width-desktop;
+    padding-right: 15px;
+    padding-bottom: 110px;
+    padding-left: 15px;
+  }
+}
+
+.map__title {
+  margin-bottom: 35px;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  font-size: 22px;
+  font-family: "Romoto-Bold", "Arial", sans-serif;
+  @media (min-width: $width-tablet) {
+    margin-bottom: 45px;
+    padding: 0;
+
+    font-size: 32px;
+  }
+  @media (min-width: $width-desktop) {
+    margin-bottom: 70px;
+
+    font-size: 41px;
+  }
+}
+
+.map__content {
+  min-height: 381px;
+
+  background-image: url("./../../assets/img/map-mobile.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 320px 381px;
+
+  @media (min-width: $width-tablet) {
+    min-height: 462px;
+
+    background-image: url("./../../assets/img/map-tablet.png");
+    background-size: 678px 462px;
+  }
+  @media (min-width: $width-desktop) {
+    background-image: url("./../../assets/img/map-desktop.png");
+    background-size: 1170px 462px;
+  }
+}
