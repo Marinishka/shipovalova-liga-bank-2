@@ -11,6 +11,7 @@
   @media (min-width: $width-tablet) {
     flex-direction: row;
     justify-content: flex-start;
+    padding-top: 50px;
   }
 }
 
@@ -125,6 +126,7 @@
   }
   @media (min-width: $width-desktop) {
     width: 150px;
+    margin-top: 6px;
 
     grid-area: navigation;
   }

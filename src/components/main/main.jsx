@@ -1,4 +1,5 @@
 import React from 'react';
+import Calculator from '../calculator/calculator';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import MapElement from '../map/map';
@@ -11,6 +12,7 @@ const Main = () => {
     <main className="main">
       <Slider/>
       <Tabs/>
+      <Calculator/>
       <MapElement/>
     </main>
     <Footer/>
