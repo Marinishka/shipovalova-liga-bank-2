@@ -27,6 +27,8 @@ html {
 }
 
 .main {
+  position: relative;
+
   flex-grow: 1;
 }
 
@@ -85,4 +87,12 @@ html {
   color: darken($color: $bg-block, $amount: 10%);
 
   background-color: darken($color: $main-color, $amount: 10%);
+}
+
+.input--valid {
+  border: 1px solid $text-color;
+}
+
+.input--invalid {
+  border: 1px solid $invalid;
 }

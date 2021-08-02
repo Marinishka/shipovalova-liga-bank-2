@@ -1,0 +1,227 @@
+.modal-login {
+  position: fixed;
+  top: 5vh;
+  left: calc(50vw - 145px);
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 290px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 45px 16px 42px 16px;
+
+  text-align: center;
+
+  background-color: $bg-block;
+  border: 4px solid $main-color;
+
+  @media (min-width: $width-tablet) {
+    top: 10vh;
+    left: calc(50vw - 339px);
+
+    width: 678px;
+    padding: 55px 83px 45px 83px;
+  }
+  @media (min-width: $width-desktop) {
+    top: 15vh;
+    left: calc(50vw - 272px);
+
+    width: 544px;
+    padding: 56px 56px 45px 56px;
+  }
+}
+
+.modal-login__logo {
+  margin-bottom: 27px;
+  margin-left: -6px;
+  @media (min-width: $width-tablet) {
+    margin-bottom: 37px;
+    margin-left: 0;
+  }
+}
+
+.modal-login__group {
+  position: relative;
+
+  width: 100%;
+  margin-bottom: 31px;
+  @media (min-width: $width-tablet) {
+    margin-bottom: 10px;
+  }
+}
+
+.modal-login__hide-password {
+  position: absolute;
+  top: 24px;
+  right: 15px;
+
+  width: 22px;
+  height: 22px;
+  padding: 0;
+
+  background-color: transparent;
+  background-image: url("./../../assets/img/hide-password.png");
+  background-repeat: no-repeat;
+  background-size: 22px;
+  border: none;
+  @media (min-width: $width-tablet) {
+    right: 26px;
+  }
+}
+
+.modal-login__label {
+  margin-bottom: 4px;
+
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Roboto-Regular", "Arial", sans-serif;
+  color: $color-label;
+  @media (min-width: $width-tablet) {
+    margin-bottom: 4px;
+  }
+}
+
+.modal-login__input {
+  width: 100%;
+  padding: 19px 60px 19px 20px;
+
+  font-size: 16px;
+  line-height: 1.2;
+  font-family: "Roboto-Roboto", "Arial", sans-serif;
+  text-align: center;
+  color: $text-color;
+
+  border: 1px solid $text-color;
+  border-radius: 4px;
+}
+
+.modal-login__input--name {
+  margin-bottom: 20px;
+  @media (min-width: $width-tablet) {
+    margin-bottom: 25px;
+  }
+}
+
+.modal-login__btn-close {
+  position: absolute;
+  top: 42px;
+  right: 13px;
+
+  width: 18px;
+  height: 18px;
+  padding: 0;
+
+  background-color: transparent;
+  border: none;
+
+  transition: 0.3s;
+  @media (min-width: $width-tablet) {
+    top: 54px;
+    right: 83px;
+  }
+  @media (min-width: $width-desktop) {
+    top: 54px;
+    right: 55px;
+  }
+}
+
+.modal-login__btn-close::after {
+  content: "";
+  position: absolute;
+
+  display: block;
+  width: 17px;
+  height: 2px;
+
+  background-color: $text-color;
+  transform: rotate(45deg);
+  @media (min-width: $width-tablet) {
+    width: 22px;
+    margin-top: -1px;
+    margin-left: -2px;
+  }
+}
+
+.modal-login__btn-close::before {
+  content: "";
+  position: absolute;
+
+  display: block;
+  width: 17px;
+  height: 2px;
+
+  background-color: $text-color;
+  transform: rotate(135deg);
+  @media (min-width: $width-tablet) {
+    width: 22px;
+    margin-top: -1px;
+    margin-left: -2px;
+  }
+}
+
+.modal-login__btn-close:hover,
+.modal-login__btn-close:focus {
+  transform: scale(110%);
+}
+
+.modal-login__btn-close:active {
+  transform: scale(90%);
+}
+
+.modal-login__sumbit {
+  width: 100%;
+  margin-bottom: 11px;
+  padding: 18px 20px 16px 20px;
+
+  font-size: 14px;
+  line-height: 1.2;
+  font-family: "Roboto-Medium", "Arial", sans-serif;
+  text-align: center;
+  color: $bg-block;
+
+  background-color: $main-color;
+  border: none;
+  border-radius: 4px;
+  @media (min-width: $width-tablet) {
+    order: 7;
+    padding-bottom: 20px;
+
+    font-size: 18px;
+  }
+}
+
+.modal-login__sumbit:hover,
+.modal-login__sumbit:focus {
+  opacity: 0.9;
+}
+
+.modal-login__sumbit:active {
+  color: darken($color: $bg-block, $amount: 10%);
+
+  background-color: darken($color: $main-color, $amount: 10%);
+}
+
+
+.modal-login__forgot-password {
+  align-self: center;
+
+  font-size: 14px;
+  line-height: 1.2;
+  font-family: "Roboto-Regular", "Arial", sans-serif;
+  color: $halfhidden;
+  text-decoration: none;
+  @media (min-width: $width-tablet) {
+    align-self: flex-end;
+    margin-bottom: 26px;
+    padding-right: 0;
+
+    font-size: 12px;
+  }
+}
+
+.modal-login__forgot-password:hover,
+.modal-login__forgot-password:focus {
+  color: $text-color;
+}

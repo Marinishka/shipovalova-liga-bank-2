@@ -5,12 +5,33 @@
   border: none;
   @media (min-width: $width-desktop) {
     width: 770px;
+    margin-top: 65px;
     margin-right: auto;
     margin-left: auto;
     padding: 67px 70px 70px;
 
     background-color: $bg-block;
   }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+  40%,
+  80% {
+    transform: translateX(+5px);
+  }
+}
+
+.application--fail {
+  animation-name: shake;
+  animation-duration: 1s;
 }
 
 .application__results {
@@ -103,7 +124,6 @@
   font-family: "Roboto-Regular", "Arial", sans-serif;
   color: $text-color;
 
-  border: 1px solid $text-color;
   border-radius: 4px;
   @media (min-width: $width-tablet) {
     padding-bottom: 17px;
@@ -130,13 +150,16 @@
 
   @media (min-width: $width-tablet) {
     display: block;
-    width: auto;
+    width: 100%;
     margin-top: 11px;
     margin-right: auto;
     margin-left: auto;
     padding: 14px 59px 14px;
 
     font-size: 16px;
+  }
+  @media (min-width: $width-desktop) {
+    width: auto;
   }
 }
 
