@@ -1,13 +1,13 @@
 import React, {useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 import {KeyCodes, Values} from '../../const';
-import {changeApplicationNumber, changePurpose, changeValues, openApplication} from './../../store/action';
+import {changeApplicationNumber, changePurpose, changeValues, getInitialState, openApplication} from './../../store/action';
 import Application from '../application/application';
 import Parameters from '../parameters/parameters';
 import Result from '../result/result';
-import PopupThanks from '../popup-thanks/popup-thanks';
 
-const Calculator = () => {
+const Calculator = ({setIsPopupOpen}) => {
   const values = useSelector((state) => state.LOCAL.values);
   const isOpenAnApplication = useSelector((state) => state.LOCAL.isOpenAnApplication);
   const name = useSelector((state) => state.LOCAL.name);
@@ -15,11 +15,9 @@ const Calculator = () => {
   const email = useSelector((state) => state.LOCAL.email);
   const applicationNumber = useSelector((state) => state.LOCAL.applicationNumber);
 
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isFormFieldFail, setIsFormFieldFail] = useState(false);
 
   const purposeOptions = useRef(null);
-  const form = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -66,7 +64,7 @@ const Calculator = () => {
       if (isFieldsFilled()) {
         dispatch(changeApplicationNumber(applicationNumber + 1));
         dispatch(openApplication(false));
-        dispatch(changeValues(null));
+        dispatch(getInitialState());
         setIsPopupOpen(true);
       } else {
         setIsFormFieldFail(true);
@@ -95,8 +93,11 @@ const Calculator = () => {
       </div>
       {isOpenAnApplication ? <Application isFormFieldFail={isFormFieldFail}/> : ``}
     </form>
-    {isPopupOpen ? <PopupThanks isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen}/> : ``}
   </section>;
+};
+
+Calculator.propTypes = {
+  setIsPopupOpen: PropTypes.func.isRequired
 };
 
 export default Calculator;

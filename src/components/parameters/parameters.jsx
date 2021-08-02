@@ -1,16 +1,13 @@
 import React, {useRef, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {KeyCodes} from '../../const';
-import {changeCasco, changeFee, changeLifeInsurance, changeMaternalCapital, changePercent, changeProperty, changeTerm} from '../../store/action';
+import Checkboxes from './../checkboxes/checkboxes';
+import {changeFee, changePercent, changeProperty, changeTerm} from '../../store/action';
 import {getNumberWithSpaces} from '../../utils/common';
 
 const Parameters = () => {
   const values = useSelector((state) => state.LOCAL.values);
   const property = useSelector((state) => state.LOCAL.property);
   const fee = useSelector((state) => state.LOCAL.fee);
-  const isMaternalCapital = useSelector((state) => state.LOCAL.isMaternalCapital);
-  const isCasco = useSelector((state) => state.LOCAL.isCasco);
-  const isLifeInsurance = useSelector((state) => state.LOCAL.isLifeInsurance);
   const percent = useSelector((state) => state.LOCAL.percent);
   const term = useSelector((state) => state.LOCAL.term);
 
@@ -92,36 +89,6 @@ const Parameters = () => {
     termInput.current.value = evt.target.value;
   };
 
-  const onMaternalCapitalChange = () => {
-    dispatch(changeMaternalCapital(!isMaternalCapital));
-  };
-
-  const onMaternalCapitalKeydown = (evt) => {
-    if (evt.keyCode === KeyCodes.ENTER) {
-      dispatch(changeMaternalCapital(!isMaternalCapital));
-    }
-  };
-
-  const isCascoChange = () => {
-    dispatch(changeCasco(!isCasco));
-  };
-
-  const onCascoKeydown = (evt) => {
-    if (evt.keyCode === KeyCodes.ENTER) {
-      dispatch(changeCasco(!isCasco));
-    }
-  };
-
-  const onLifeInsuranceChange = () => {
-    dispatch(changeLifeInsurance(!isLifeInsurance));
-  };
-
-  const onLifeInsuranceKeydown = (evt) => {
-    if (evt.keyCode === KeyCodes.ENTER) {
-      dispatch(changeLifeInsurance(!isLifeInsurance));
-    }
-  };
-
   useEffect(() => {
     dispatch(changeProperty(Number(PRICE.MIN)));
     dispatch(changePercent(values.MIN_PERCENT));
@@ -130,7 +97,7 @@ const Parameters = () => {
     feeInput.current.value = PRICE.MIN * values.MIN_PERCENT * 0.01;
     feeInput.current.min = PRICE.MIN * values.MIN_PERCENT * 0.01;
     feeInput.current.max = PRICE.MAX;
-  }, [values.TITLE]);
+  }, [values]);
 
   return <>
     <div className="calculator__group calculator__group--step-2">
@@ -193,27 +160,7 @@ const Parameters = () => {
         <div className="calculator__term-value calculator__term-value--max">30 лет</div>
       </div>
     </div>
-    {values.VALUE === `mortgage` ?
-      <label className="calculator__label">
-        <input className="calculator__checkbox visually-hidden" type="checkbox" onChange={onMaternalCapitalChange}></input>
-        <div className={`calculator__checkbox-label ${isMaternalCapital ? `calculator__checkbox-label--active` : ``}`}
-          tabIndex="0"
-          onKeyDown={onMaternalCapitalKeydown}>Использовать материнский капитал</div>
-      </label> :
-      <>
-        <label className="calculator__label">
-          <input className="calculator__checkbox visually-hidden" type="checkbox" checked={isCasco} onChange={isCascoChange}></input>
-          <div className={`calculator__checkbox-label ${isCasco ? `calculator__checkbox-label--active` : ``}`}
-            tabIndex="0"
-            onKeyDown={onCascoKeydown}>Оформить КАСКО</div>
-        </label>
-        <label className="calculator__label">
-          <input className="calculator__checkbox visually-hidden" type="checkbox" checked={isLifeInsurance} onChange={onLifeInsuranceChange}></input>
-          <div className={`calculator__checkbox-label ${isLifeInsurance ? `calculator__checkbox-label--active` : ``}`}
-            tabIndex="0"
-            onKeyDown={onLifeInsuranceKeydown}>Оформить Страхование жизни в нашем банке</div>
-        </label>
-      </>}
+    {<Checkboxes value={values.VALUE}/>}
   </>;
 };
 

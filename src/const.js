@@ -69,3 +69,16 @@ export const Values = {
 };
 
 export const MATERNAL_CAPITAL = 470000;
+
+export const InitialState = {
+  purpose: null,
+  values: null,
+  property: 0,
+  fee: 0,
+  isMaternalCapital: false,
+  isCasco: false,
+  isLifeInsurance: false,
+  percent: 0,
+  term: 5,
+  amountOfCredit: 0,
+};

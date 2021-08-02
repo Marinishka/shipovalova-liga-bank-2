@@ -32,7 +32,7 @@ const Header = ({isModalOpened, setIsModalOpened}) => {
           <picture>
             <source media={`(min-width: ${ScreenWidth.TABLET})`} srcSet="./img/logo-tablet.png"></source>
             <source media={`(min-width: ${ScreenWidth.DESKTOP})`} srcSet="./img/logo-desktop.png"></source>
-            <img className="header__logo" width="115" height="17" src="./img/logo-mobile.png" alt="Логотип Лига Банк"></img>
+            <img className="header__logo" width="116" height="19" src="./img/logo-mobile.png" alt="Логотип Лига Банк"></img>
           </picture>
         </a>
       </div>
@@ -58,10 +58,10 @@ const Header = ({isModalOpened, setIsModalOpened}) => {
           </a>
         </div>
       </nav>
-      <button className="header__open" onClick={onOpenClick}>
+      <button className="header__open" onClick={onOpenClick} type="button" aria-label="Открыть меню">
         <div></div>
       </button>
-      <button className="header__close" ref={close} onClick={onCloseClick}></button>
+      <button className="header__close" ref={close} onClick={onCloseClick} type="button" aria-label="Закрыть меню"></button>
     </div>
   </header>;
 };
