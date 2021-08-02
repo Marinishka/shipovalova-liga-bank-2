@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {KeyCodes} from '../../const';
+import {HashLink} from 'react-router-hash-link';
 
 const Slider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -37,7 +38,7 @@ const Slider = () => {
         <div className="slider__wrapper">
           <h2 className="slider__title">Лига банк</h2>
           <p className="slider__text">Кредиты на любой случай</p>
-          <a className="slider__link" href="/">Рассчитать кредит</a>
+          <HashLink className="slider__link" to="/#calculator">Рассчитать кредит</HashLink>
           <img className="slider__card slider__card--white" width="335" height="228" src="./img/white_card.png" alt="Белая карта банка"></img>
           <img className="slider__card slider__card--black" width="335" height="228" src="./img/black_card.png" alt="Черная карта банка"></img>
         </div>
@@ -52,7 +53,7 @@ const Slider = () => {
         <div className="slider__wrapper">
           <h2 className="slider__title">Лига банк</h2>
           <p className="slider__text">Всегда рядом</p>
-          <a className="slider__link" href="/">Найти отделение</a>
+          <HashLink className="slider__link" to="/#map">Найти отделение</HashLink>
         </div>
       </li>
     </ul>

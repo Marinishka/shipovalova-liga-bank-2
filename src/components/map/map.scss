@@ -4,7 +4,7 @@
     margin-right: auto;
     margin-left: auto;
     padding-right: 45px;
-    padding-bottom: 80px;
+    padding-bottom: 82px;
     padding-left: 45px;
   }
   @media (min-width: $width-desktop) {
@@ -16,27 +16,28 @@
 }
 
 .map__title {
-  margin-bottom: 35px;
+  margin-top: 0;
+  margin-bottom: 29px;
   padding-right: 15px;
   padding-left: 15px;
 
   font-size: 22px;
   font-family: "Romoto-Bold", "Arial", sans-serif;
   @media (min-width: $width-tablet) {
-    margin-bottom: 45px;
+    margin-bottom: 36px;
     padding: 0;
 
     font-size: 32px;
   }
   @media (min-width: $width-desktop) {
-    margin-bottom: 70px;
+    margin-bottom: 60px;
 
     font-size: 41px;
   }
 }
 
 .map__content {
-  min-height: 381px;
+  height: 381px;
 
   background-image: url("./../../assets/img/map-mobile.png");
   background-repeat: no-repeat;
@@ -44,7 +45,7 @@
   background-size: 320px 381px;
 
   @media (min-width: $width-tablet) {
-    min-height: 462px;
+    height: 462px;
 
     background-image: url("./../../assets/img/map-tablet.png");
     background-size: 678px 462px;

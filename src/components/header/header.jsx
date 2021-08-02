@@ -1,14 +1,28 @@
 import React, {useRef} from 'react';
 import login from './../../assets/img/icons/icon-login.svg';
 import {ScreenWidth} from './../../const.js';
+import PropTypes from 'prop-types';
 
-const Header = () => {
+const Header = ({isModalOpened, setIsModalOpened}) => {
+  const headerNavList = useRef(null);
   const headerNav = useRef(null);
-  const toggle = useRef(null);
+  const close = useRef(null);
 
-  const onToggleClick = () => {
-    headerNav.current.classList.toggle(`header-nav-list--visible`);
-    toggle.current.classList.toggle(`header-toggle--open`);
+  const onOpenClick = () => {
+    headerNavList.current.classList.add(`header-nav-list--visible`);
+    headerNav.current.classList.add(`header-nav--open`);
+    close.current.classList.add(`header__close--visible`);
+  };
+
+  const onCloseClick = () => {
+    headerNavList.current.classList.remove(`header-nav-list--visible`);
+    headerNav.current.classList.remove(`header-nav--open`);
+    close.current.classList.remove(`header__close--visible`);
+  };
+
+  const onLoginClick = (evt) => {
+    evt.preventDefault();
+    setIsModalOpened(!isModalOpened);
   };
 
   return <header className="header">
@@ -22,14 +36,8 @@ const Header = () => {
           </picture>
         </a>
       </div>
-      <div className="header__user header-user">
-        <a className="header-user__link" href="/">
-          <img className="header-user__icon" width="14" height="16" src={login} alt="Войти в Интернет-банк"></img>
-          <span className="header-user__label">Войти в Интернет-банк</span>
-        </a>
-      </div>
-      <nav ref={headerNav} className="header__nav header-nav">
-        <ul className="header-nav__list header-nav-list">
+      <nav className="header__nav header-nav" ref={headerNav}>
+        <ul className="header-nav__list header-nav-list" ref={headerNavList}>
           <li className="header-nav-list__item">
             <a className="header-nav-list__link" href="/">Услуги</a>
           </li>
@@ -43,12 +51,24 @@ const Header = () => {
             <a className="header-nav-list__link" href="/">Контакты</a>
           </li>
         </ul>
+        <div className="header__user header-user" onClick={onLoginClick}>
+          <a className="header-user__link" href="/">
+            <img className="header-user__icon" width="14" height="16" src={login} alt="Войти в Интернет-банк"></img>
+            <span className="header-user__label">Войти в Интернет-банк</span>
+          </a>
+        </div>
       </nav>
-      <button ref={toggle} className="header__toggle" onClick={onToggleClick}>
+      <button className="header__open" onClick={onOpenClick}>
         <div></div>
       </button>
+      <button className="header__close" ref={close} onClick={onCloseClick}></button>
     </div>
   </header>;
+};
+
+Header.propTypes = {
+  isModalOpened: PropTypes.bool.isRequired,
+  setIsModalOpened: PropTypes.func.isRequired
 };
 
 export default Header;
