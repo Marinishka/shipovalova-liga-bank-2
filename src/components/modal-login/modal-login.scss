@@ -1,4 +1,14 @@
 .modal-login {
+  position: absolute;
+  z-index: 3;
+
+  width: 100vw;
+  height: 100%;
+
+  background-color: $bg-block;
+}
+
+.modal-login__wrapper {
   position: fixed;
   top: 5vh;
   left: calc(50vw - 145px);
@@ -66,9 +76,20 @@
   background-repeat: no-repeat;
   background-size: 22px;
   border: none;
+
+  transition: 0.3s;
   @media (min-width: $width-tablet) {
     right: 26px;
   }
+}
+
+.modal-login__hide-password:hover,
+.modal-login__hide-password:focus {
+  transform: scale(110%);
+}
+
+.modal-login__hide-password:active {
+  transform: scale(90%);
 }
 
 .modal-login__label {
@@ -93,8 +114,14 @@
   text-align: center;
   color: $text-color;
 
+  background-color: $bg-block;
   border: 1px solid $text-color;
   border-radius: 4px;
+}
+
+.modal-login__input:hover,
+.modal-login__input:focus {
+  background-color: white;
 }
 
 .modal-login__input--name {

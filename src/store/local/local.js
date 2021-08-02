@@ -1,4 +1,4 @@
-import {changeAmountOfCredit, changeApplicationNumber, changeCasco, changeEmail, changeFee, changeLifeInsurance, changeMaternalCapital, changeName, changePercent, changeProperty, changePurpose, changeSatisfyingParameters, changeTelephone, changeTerm, changeValues, enterLogin, enterPassword, openApplication} from '../action';
+import {changeAmountOfCredit, changeApplicationNumber, changeCasco, changeEmail, changeFee, changeLifeInsurance, changeMaternalCapital, changeName, changePercent, changeProperty, changePurpose, changeSatisfyingParameters, changeTelephone, changeTerm, changeValues, enterLogin, enterPassword, getInitialState, openApplication} from '../action';
 import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
@@ -76,6 +76,12 @@ const localState = createReducer(initialState, (builder) => {
   });
   builder.addCase(enterPassword, (state, action) => {
     state.password = action.payload;
+  });
+  builder.addCase(getInitialState, (state, action) => {
+    return Object.assign(
+        state,
+        action.payload
+    );
   });
 });
 

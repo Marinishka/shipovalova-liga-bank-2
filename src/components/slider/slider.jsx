@@ -58,9 +58,9 @@ const Slider = () => {
       </li>
     </ul>
     <div className="slider__dots" onClick={onDotsClick} onKeyDown={(evt) => onEnterPress(evt)}>
-      <button className={`slider__dot ${activeSlide === 0 ? `slider__dot--active` : ``}`} data-dot-index="0" type="button"></button>
-      <button className={`slider__dot ${activeSlide === 1 ? `slider__dot--active` : ``}`} data-dot-index="1" type="button"></button>
-      <button className={`slider__dot ${activeSlide === 2 ? `slider__dot--active-dark` : ``}`} data-dot-index="2" type="button"></button>
+      <button className={`slider__dot ${activeSlide === 0 ? `slider__dot--active` : ``}`} data-dot-index="0" type="button" aria-label="Первый слайд"></button>
+      <button className={`slider__dot ${activeSlide === 1 ? `slider__dot--active` : ``}`} data-dot-index="1" type="button" aria-label="Второй слайд"></button>
+      <button className={`slider__dot ${activeSlide === 2 ? `slider__dot--active-dark` : ``}`} data-dot-index="2" type="button" aria-label="Третий слайд"></button>
     </div>
   </div>;
 };

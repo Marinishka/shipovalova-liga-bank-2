@@ -239,6 +239,11 @@
   -moz-appearance: textfield;
 }
 
+.calculator__input:hover,
+.calculator__input:focus {
+  background-color: $bg-block;
+}
+
 .calculator__btn {
   position: absolute;
 
@@ -251,6 +256,8 @@
   left: 19px;
 
   padding: 5px;
+
+  transition: 0.3s;
 }
 
 .calculator__btn--decrease::before {
@@ -268,6 +275,8 @@
   right: 10px;
 
   padding: 5px;
+
+  transition: 0.3s;
   @media (min-width: $width-tablet) {
     right: 19px;
   }
@@ -282,6 +291,18 @@
 
   background: linear-gradient(to left, transparent, transparent 7px, $text-color 7px, $text-color 9px, transparent 9px, transparent),
   linear-gradient(transparent, transparent 7px, $text-color 7px, $text-color 9px, transparent 9px, transparent);
+}
+
+.calculator__btn--decrease:hover,
+.calculator__btn--decrease:focus,
+.calculator__btn--increase:hover,
+.calculator__btn--increase:focus {
+  transform: scale(110%);
+}
+
+.calculator__btn--decrease:active,
+.calculator__btn--increase:active {
+  transform: scale(90%);
 }
 
 .calculator__prompt {
@@ -306,6 +327,7 @@
   width: 25px;
   height: 25px;
 
+  background-color: $main-color;
   border-radius: 50%;
   cursor: pointer;
 
@@ -314,12 +336,16 @@
 }
 
 .calculator__range::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
 
+  background-color: $main-color;
+  border: transparent;
   border-radius: 50%;
   cursor: pointer;
 }
+
+
 
 .calculator__checkbox-label {
   font-size: 14px;
@@ -327,6 +353,8 @@
   font-family: "Roboto-Medium", "Arial", sans-serif;
   vertical-align: middle;
   color: $text-color;
+
+  cursor: pointer;
   @media (min-width: $width-tablet) {
     font-size: 16px;
   }
@@ -355,6 +383,11 @@
   background-position: center;
   background-size: 8px 6px;
   border-color: $main-color;
+}
+
+.calculator__checkbox-label:hover::before,
+.calculator__checkbox-label:focus::before {
+  border: 1px solid $color-label;
 }
 
 .calculator__range-value {

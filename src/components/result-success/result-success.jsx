@@ -8,6 +8,8 @@ import {Words} from '../../const';
 const ResultSuccess = ({monthlyPayment, necessaryIncome, interestRate}) => {
   const amountOfCredit = useSelector((state) => state.LOCAL.amountOfCredit);
   const values = useSelector((state) => state.LOCAL.values);
+  // eslint-disable-next-line
+  console.log(amountOfCredit);
 
   const dispatch = useDispatch();
 

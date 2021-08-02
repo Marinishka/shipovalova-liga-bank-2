@@ -1,4 +1,5 @@
 import {createAction} from '@reduxjs/toolkit';
+import {InitialState} from '../const';
 
 export const ActionType = {
   CHANGE_PURPOSE: `local/porpose`,
@@ -18,7 +19,8 @@ export const ActionType = {
   CHANGE_TEL: `local/tel`,
   CHANGE_APPLICATION_NUMBER: `local/applicationNumber`,
   ENTER_LOGIN: `local/login`,
-  ENTER_PASSWORD: `local/password`
+  ENTER_PASSWORD: `local/password`,
+  GET_INITIAL_STATE: `local/state`
 };
 
 export const changePurpose = createAction(ActionType.CHANGE_PURPOSE, (data) => {
@@ -128,3 +130,9 @@ export const enterPassword = createAction(ActionType.ENTER_PASSWORD, (data) => {
     payload: data
   };
 });
+
+export const getInitialState = (createAction(ActionType.GET_INITIAL_STATE, () => {
+  return {
+    payload: InitialState
+  };
+}));

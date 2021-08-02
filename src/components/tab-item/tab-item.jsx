@@ -30,7 +30,13 @@ const getIcon = (tabTitle, tabTitleLowerCase) => {
 const TabItem = ({tabTitle, isTabActive}) => {
   const tabTitleLowerCase = Object.keys(TabsTitles).find((key) => TabsTitles[key] === tabTitle).toLowerCase();
   return <li className="tabs__item">
-    <button tabIndex="0" data-tab={tabTitleLowerCase} href="#" className={`tabs__btn tabs__btn--${tabTitleLowerCase} ${isTabActive ? `tabs__btn--active` : ``}`} onClick={(evt) => evt.preventDefault()}>
+    <button tabIndex="0"
+      data-tab={tabTitleLowerCase}
+      href="#"
+      className={`tabs__btn tabs__btn--${tabTitleLowerCase} ${isTabActive ? `tabs__btn--active` : ``}`}
+      onClick={(evt) => evt.preventDefault()}
+      type="button"
+      aria-label="Переключиться на таб">
       {getIcon(tabTitle, tabTitleLowerCase)}
       <span data-tab={tabTitleLowerCase} className="tabs__title">{tabTitle}</span>
     </button>
