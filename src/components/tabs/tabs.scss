@@ -94,12 +94,13 @@
 
 .tabs__title {
   display: none;
+
+@extend .font-family--medium;
   @media (min-width: $width-desktop) {
     display: inline-block;
 
     font-size: 18px;
     line-height: 1.2;
-    font-family: $font-family-medium;
     vertical-align: middle;
   }
 }
@@ -228,8 +229,9 @@
   margin-bottom: 20px;
 
   line-height: 1.4;
-  font-family: $font-family-medium;
   color: $text-color;
+
+@extend .font-family--medium;
 
 @extend .font-size--text;
 
@@ -309,13 +311,15 @@
 
   font-size: 14px;
   line-height: 1.2;
-  font-family: $font-family-medium;
   text-align: center;
   color: $bg-block;
   text-decoration: none;
 
   background-color: $main-color;
   border-radius: 4px;
+
+@extend .font-family--medium;
+
   @media (min-width: $width-tablet) {
     width: 198px;
     padding: 14px;
@@ -348,7 +352,8 @@
 
   font-size: 15px;
   line-height: 1.3;
-  font-family: $font-family-regular;
+
+@extend .font-family--regular;
 
   @media (min-width: $width-tablet) {
     margin-right: 40px;

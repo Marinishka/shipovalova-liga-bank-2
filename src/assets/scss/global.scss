@@ -112,3 +112,18 @@ html {
     font-size: 22px;
   }
 }
+
+.font-family--regular {
+  font-weight: 400;
+  font-family: $font-family;
+}
+
+.font-family--medium {
+  font-weight: 500;
+  font-family: $font-family;
+}
+
+.font-family--bold {
+  font-weight: 600;
+  font-family: $font-family;
+}

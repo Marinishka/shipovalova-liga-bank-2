@@ -28,8 +28,9 @@
 
   font-size: 22px;
   line-height: 1.2;
-  font-family: $font-family-bold;
   color: $text-color;
+
+@extend .font-family--bold;
   @media (min-width: $width-tablet) {
     margin-bottom: 30px;
 
@@ -47,8 +48,9 @@
   margin-top: 0;
 
   line-height: 1.4;
-  font-family: $font-family-medium;
   color: $text-color;
+
+@extend .font-family--medium;
 
 @extend .font-size--text;
 
@@ -110,8 +112,6 @@
 .calculator__legend {
   padding: 18px 35px 18px 15px;
 
-  font-family: $font-family-medium;
-
   background-image: url("./../../assets/img/arrow-down.png");
   background-repeat: no-repeat;
   background-position: right 14px top 24px;
@@ -119,6 +119,9 @@
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   cursor: pointer;
+
+@extend .font-family--medium;
+
   @media (min-width: $width-tablet) {
     padding-right: 50px;
     padding-left: 22px;
@@ -134,9 +137,10 @@
   display: block;
   padding: 18px 35px 18px 15px;
 
-  font-family: $font-family-regular;
-
   cursor: pointer;
+
+@extend .font-family--regular;
+
   @media (min-width: $width-tablet) {
     padding-right: 50px;
     padding-left: 22px;
@@ -202,8 +206,9 @@
 
   font-size: 16px;
   line-height: 1.4;
-  font-family: $font-family-medium;
   color: $color-label;
+
+@extend .font-family--medium;
 }
 
 .calculator__input {
@@ -212,11 +217,12 @@
 
   font-size: 16px;
   line-height: 1.2;
-  font-family: $font-family-medium;
   text-align: center;
   color: $text-color;
 
   border-radius: 4px;
+
+@extend .font-family--medium;
 }
 
 .calculator__input--fee,
@@ -308,9 +314,10 @@
 
   font-size: 14px;
   line-height: 1.4;
-  font-family: $font-family-medium;
   color: $color-label;
   letter-spacing: 0.001em;
+
+@extend .font-family--medium;
 }
 
 .calculator__range {
@@ -346,11 +353,13 @@
 .calculator__checkbox-label {
   font-size: 14px;
   line-height: 1.2;
-  font-family: $font-family-medium;
   vertical-align: middle;
   color: $text-color;
 
   cursor: pointer;
+
+@extend .font-family--medium;
+
   @media (min-width: $width-tablet) {
     font-size: 16px;
   }
@@ -391,8 +400,9 @@
 
   font-size: 14px;
   line-height: 1.2;
-  font-family: $font-family-medium;
   color: $color-label;
+
+@extend .font-family--medium;
 }
 
 .calculator__term {
@@ -401,6 +411,7 @@
 
   font-size: 14px;
   line-height: 1.2;
-  font-family: $font-family-medium;
   color: $color-label;
+
+@extend .font-family--medium;
 }

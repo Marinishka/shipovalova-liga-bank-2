@@ -103,8 +103,9 @@
   font-weight: 700;
   font-size: 38px;
   line-height: 1.2;
-  font-family: $font-family-bold;
   text-transform: capitalize;
+
+@extend .font-family--bold;
   @media (min-width: $width-tablet) {
     font-size: 46px;
   }
@@ -129,7 +130,8 @@
 
   font-weight: normal;
   line-height: 1.2;
-  font-family: $font-family-regular;
+
+@extend .font-family--regular;
 
 @extend .font-size--text;
 
@@ -158,10 +160,12 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 1.2;
-  font-family: $font-family-medium;
   text-decoration: none;
 
   border-radius: 4px;
+
+@extend .font-family--medium;
+
   @media (min-width: $width-tablet) {
     padding-bottom: 16px;
 
