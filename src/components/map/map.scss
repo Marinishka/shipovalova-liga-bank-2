@@ -37,21 +37,21 @@
 }
 
 .map__content {
-  height: 381px;
+  height: $map-height-mobile;
 
   background-image: url("./../../assets/img/map-mobile.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 320px 381px;
+  background-size: $map-width-mobile $map-height-mobile;
 
   @media (min-width: $width-tablet) {
-    height: 462px;
+    height: $map-height-tablet;
 
     background-image: url("./../../assets/img/map-tablet.png");
-    background-size: 678px 462px;
+    background-size: $map-width-tablet $map-height-tablet;
   }
   @media (min-width: $width-desktop) {
     background-image: url("./../../assets/img/map-desktop.png");
-    background-size: 1170px 462px;
+    background-size: $map-width-desktop $map-height-tablet;
   }
 }

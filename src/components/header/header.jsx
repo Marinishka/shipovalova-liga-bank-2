@@ -1,12 +1,20 @@
 import React, {useRef} from 'react';
 import login from './../../assets/img/icons/icon-login.svg';
-import {ScreenWidth} from './../../const.js';
+import {NavigationItems, ScreenWidth} from './../../const.js';
 import PropTypes from 'prop-types';
 
 const Header = ({isModalOpened, setIsModalOpened}) => {
   const headerNavList = useRef(null);
   const headerNav = useRef(null);
   const close = useRef(null);
+
+  const getNavItems = () => {
+    return Object.keys(NavigationItems.HEADER).map((item) => {
+      return <li className="header-nav-list__item" key={item}>
+        <a className="header-nav-list__link" href={NavigationItems.HEADER[item]}>{item}</a>
+      </li>;
+    });
+  };
 
   const onOpenClick = () => {
     headerNavList.current.classList.add(`header-nav-list--visible`);
@@ -38,18 +46,7 @@ const Header = ({isModalOpened, setIsModalOpened}) => {
       </div>
       <nav className="header__nav header-nav" ref={headerNav}>
         <ul className="header-nav__list header-nav-list" ref={headerNavList}>
-          <li className="header-nav-list__item">
-            <a className="header-nav-list__link" href="/">Услуги</a>
-          </li>
-          <li className="header-nav-list__item">
-            <a className="header-nav-list__link" href="/">Рассчитать кредит</a>
-          </li>
-          <li className="header-nav-list__item">
-            <a className="header-nav-list__link" href="/">Конвертер валют</a>
-          </li>
-          <li className="header-nav-list__item">
-            <a className="header-nav-list__link" href="/">Контакты</a>
-          </li>
+          {getNavItems()}
         </ul>
         <div className="header__user header-user" onClick={onLoginClick}>
           <a className="header-user__link" href="/">
@@ -58,9 +55,7 @@ const Header = ({isModalOpened, setIsModalOpened}) => {
           </a>
         </div>
       </nav>
-      <button className="header__open" onClick={onOpenClick} type="button" aria-label="Открыть меню">
-        <div></div>
-      </button>
+      <button className="header__open" onClick={onOpenClick} type="button" aria-label="Открыть меню"></button>
       <button className="header__close" ref={close} onClick={onCloseClick} type="button" aria-label="Закрыть меню"></button>
     </div>
   </header>;

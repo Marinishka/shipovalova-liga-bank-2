@@ -10,12 +10,12 @@
 }
 
 .slider__item {
-  min-height: 226px;
+  min-height: $slider-height-mobile;
   @media (min-width: $width-tablet) {
-    min-height: 300px;
+    min-height: $slider-height-tablet;
   }
   @media (min-width: $width-desktop) {
-    min-height: 400px;
+    min-height: $slider-height-desktop;
   }
 }
 
@@ -35,18 +35,18 @@
   linear-gradient(to right, #dde2ec 50%, #f1f7ff 50%);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: auto 226px;
+  background-size: auto $slider-height-mobile;
   @media (min-width: $width-tablet) {
     height: auto;
 
     background-image: url("./../../assets/img/slider-2-tablet.png"),
     linear-gradient(to right, #dde2ec 50%, #f1f7ff 50%);
-    background-size: auto 300px;
+    background-size: auto $slider-height-tablet;
   }
   @media (min-width: $width-desktop) {
     background-image: url("./../../assets/img/slider-2-desktop.png"),
     linear-gradient(to right, #dde2ec 50%, #f1f7ff 50%);
-    background-size: auto 400px;
+    background-size: auto $slider-height-desktop;
   }
 }
 
@@ -57,17 +57,17 @@
   linear-gradient(to right, #e6f1fe 50%, #e8f0fc 50%);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: auto 226px;
+  background-size: auto $slider-height-mobile;
 
   @media (min-width: $width-tablet) {
     background-image: url("./../../assets/img/slider-3-tablet.png"),
     linear-gradient(to right, #e6f1fe 50%, #e8f0fc 50%);
-    background-size: auto 300px;
+    background-size: auto $slider-height-tablet;
   }
   @media (min-width: $width-desktop) {
     background-image: url("./../../assets/img/slider-3-desktop.png"),
     linear-gradient(to right, #e6f1fe 50%, #e8f0fc 50%);
-    background-size: auto 400px;
+    background-size: auto $slider-height-desktop;
   }
 }
 
@@ -103,7 +103,7 @@
   font-weight: 700;
   font-size: 38px;
   line-height: 1.2;
-  font-family: "Roboto-Bold","Arial", sans-serif;
+  font-family: $font-family-bold;
   text-transform: capitalize;
   @media (min-width: $width-tablet) {
     font-size: 46px;
@@ -128,19 +128,16 @@
   margin-bottom: 26px;
 
   font-weight: normal;
-  font-size: 16px;
   line-height: 1.2;
-  font-family: "Roboto-Regular", "Arial", sans-serif;
+  font-family: $font-family-regular;
+
+@extend .font-size--text;
 
   @media (min-width: $width-tablet) {
     margin-bottom: 29px;
-
-    font-size: 18px;
   }
   @media (min-width: $width-desktop) {
     margin-bottom: 34px;
-
-    font-size: 22px;
   }
 }
 
@@ -161,7 +158,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 1.2;
-  font-family: "Roboto-Medium", "Arial", sans-serif;
+  font-family: $font-family-medium;
   text-decoration: none;
 
   border-radius: 4px;

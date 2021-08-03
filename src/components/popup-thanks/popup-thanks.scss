@@ -45,7 +45,7 @@
 
   font-size: 18px;
   line-height: 1.4;
-  font-family: "Roboto-Medium", "Arial", sans-serif;
+  font-family: $font-family-medium;
   color: $text-color;
   @media (min-width: $width-tablet) {
     font-size: 22px;
@@ -57,7 +57,7 @@
 
   font-size: 16px;
   line-height: 1.4;
-  font-family: "Roboto-Regular", "Arial", sans-serif;
+  font-family: $font-family-regular;
   color: $color-label;
 }
 

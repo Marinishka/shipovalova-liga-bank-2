@@ -91,7 +91,7 @@
   font-weight: normal;
   font-size: 12px;
   line-height: 1.5;
-  font-family: "Roboto-Regular", "Arial", sans-serif;
+  font-family: $font-family-regular;
   color: $halfhidden;
 }
 
@@ -136,7 +136,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 1.2;
-  font-family: "Roboto-Medium", "Arial", sans-serif;
+  font-family: $font-family-medium;
   text-decoration: none;
 
 @extend .link;
@@ -160,7 +160,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1.2;
-  font-family: "Roboto-Medium", "Arial", sans-serif;
+  font-family: $font-family-medium;
   text-decoration: none;
 
 @extend .link;

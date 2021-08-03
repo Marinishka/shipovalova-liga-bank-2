@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import Checkboxes from './../checkboxes/checkboxes';
 import {changeFee, changePercent, changeProperty, changeTerm} from '../../store/action';
 import {getNumberWithSpaces} from '../../utils/common';
+import {TermYears} from '../../const';
 
 const Parameters = () => {
   const values = useSelector((state) => state.LOCAL.values);
@@ -142,8 +143,8 @@ const Parameters = () => {
       <input className="calculator__input calculator__input--term input--valid"
         ref={termInput}
         type="number"
-        min="5"
-        max="30"
+        min={TermYears.MIN}
+        max={TermYears.MAX}
         id="loan terms"
         name="terms"
         defaultValue={term}
@@ -151,13 +152,13 @@ const Parameters = () => {
       <input className="calculator__range calculator__range--term"
         ref={termRange}
         type="range"
-        min="5"
-        max="30"
+        min={TermYears.MIN}
+        max={TermYears.MAX}
         defaultValue={term}
         onInput={onTermRangeChange}></input>
       <div className="calculator__term">
-        <div className="calculator__term-value calculator__term-value--min">5 лет</div>
-        <div className="calculator__term-value calculator__term-value--max">30 лет</div>
+        <div className="calculator__term-value calculator__term-value--min">{TermYears.MIN} лет</div>
+        <div className="calculator__term-value calculator__term-value--max">{TermYears.MAX} лет</div>
       </div>
     </div>
     {<Checkboxes value={values.VALUE}/>}

@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
-import {KeyCodes, Values} from '../../const';
+import {KeyCodes, Purposes, Values} from '../../const';
 import {changeApplicationNumber, changePurpose, changeValues, getInitialState, openApplication} from './../../store/action';
 import Application from '../application/application';
 import Parameters from '../parameters/parameters';
@@ -14,6 +14,7 @@ const Calculator = ({setIsPopupOpen}) => {
   const telephone = useSelector((state) => state.LOCAL.telephone);
   const email = useSelector((state) => state.LOCAL.email);
   const applicationNumber = useSelector((state) => state.LOCAL.applicationNumber);
+  const purpose = useSelector((state) => state.LOCAL.purpose);
 
   const [isFormFieldFail, setIsFormFieldFail] = useState(false);
 
@@ -34,6 +35,7 @@ const Calculator = ({setIsPopupOpen}) => {
   const onPurposeChange = (evt) => {
     if (evt.target.tagName === `INPUT`) {
       dispatch(changePurpose(evt.target.value));
+      purposeOptions.current.classList.toggle(`calculator__options--visible`);
       for (let item in Values) {
         if (Values[item].VALUE === evt.target.value) {
           dispatch(changeValues(Values[item]));
@@ -79,7 +81,7 @@ const Calculator = ({setIsPopupOpen}) => {
         <div className="calculator__cell">
           <h3 className="calculator__label-group calculator__label-group--step-1">Шаг 1. Цель кредита</h3>
           <div className="calculator__select">
-            <div className="calculator__legend" onClick={onPurposeClick} onKeyDown={onPurposeKeydown} tabIndex="0">Выберите цель кредита</div>
+            <div className="calculator__legend" onClick={onPurposeClick} onKeyDown={onPurposeKeydown} tabIndex="0">{Purposes[purpose]}</div>
             <div className="calculator__options" ref={purposeOptions} onClick={onPurposeChange} onKeyDown={onPurposeChangeKeydown}>
               <label className="calculator__option" htmlFor="mortgage" data-option="mortgage" tabIndex="0">Ипотечное кредитование</label>
               <input className="calculator__radio visually-hidden" type="radio" value="mortgage" id="mortgage"></input>

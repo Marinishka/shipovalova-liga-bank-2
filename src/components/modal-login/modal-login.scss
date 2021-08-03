@@ -97,7 +97,7 @@
 
   font-size: 16px;
   line-height: 1.4;
-  font-family: "Roboto-Regular", "Arial", sans-serif;
+  font-family: $font-family-regular;
   color: $color-label;
   @media (min-width: $width-tablet) {
     margin-bottom: 4px;
@@ -110,7 +110,7 @@
 
   font-size: 16px;
   line-height: 1.2;
-  font-family: "Roboto-Roboto", "Arial", sans-serif;
+  font-family: $font-family-regular;
   text-align: center;
   color: $text-color;
 
@@ -204,7 +204,7 @@
 
   font-size: 14px;
   line-height: 1.2;
-  font-family: "Roboto-Medium", "Arial", sans-serif;
+  font-family: $font-family-medium;
   text-align: center;
   color: $bg-block;
 
@@ -236,7 +236,7 @@
 
   font-size: 14px;
   line-height: 1.2;
-  font-family: "Roboto-Regular", "Arial", sans-serif;
+  font-family: $font-family-regular;
   color: $halfhidden;
   text-decoration: none;
   @media (min-width: $width-tablet) {

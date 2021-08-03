@@ -42,20 +42,18 @@
   margin-top: 0;
   margin-bottom: 38px;
 
-  font-size: 16px;
   line-height: 1.2;
-  font-family: "Roboto-Medium", "Arial", sans-serif;
+  font-family: $font-family-medium;
   text-align: center;
   color: $text-color;
+
+@extend .font-size--text;
+
   @media (min-width: $width-tablet) {
     margin-bottom: 42px;
-
-    font-size: 18px;
   }
   @media (min-width: $width-desktop) {
     margin-bottom: 28px;
-
-    font-size: 22px;
   }
 }
 
@@ -65,7 +63,7 @@
 
   font-size: 18px;
   line-height: 1.2;
-  font-family: "Roboto-Medium", "Arial", sans-serif;
+  font-family: $font-family-medium;
   color: $text-color;
   @media (min-width: $width-tablet) {
     order: 2;
@@ -80,9 +78,8 @@
 
   font-size: 16px;
   line-height: 1.2;
-  font-family: "Roboto-Regular", "Arial", sans-serif;
+  font-family: $font-family-regular;
   color: $color-label;
-
 
   @media (min-width: $width-tablet) {
     order: 1;
@@ -121,7 +118,7 @@
 
   font-size: 16px;
   line-height: 1.2;
-  font-family: "Roboto-Regular", "Arial", sans-serif;
+  font-family: $font-family-regular;
   color: $text-color;
 
   border-radius: 4px;
@@ -140,7 +137,7 @@
 
   font-size: 14px;
   line-height: 1.4;
-  font-family: "Roboto-Medium", "Arial", sans-serif;
+  font-family: $font-family-medium;
   text-align: center;
 
   border: none;
