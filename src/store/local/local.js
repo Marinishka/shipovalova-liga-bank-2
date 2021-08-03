@@ -2,7 +2,7 @@ import {changeAmountOfCredit, changeApplicationNumber, changeCasco, changeEmail,
 import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
-  purpose: null,
+  purpose: `initial`,
   values: null,
   property: 0,
   fee: 0,

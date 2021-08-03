@@ -1,7 +1,16 @@
 import React from 'react';
-import {ScreenWidth} from './../../const.js';
+import {NavigationItems, ScreenWidth} from './../../const.js';
 
 const Footer = () => {
+
+  const getNavItems = () => {
+    return Object.keys(NavigationItems.FOOTER).map((item) => {
+      return <li className="header-nav-list__item" key={item}>
+        <a className="header-nav-list__link" href={NavigationItems.HEADER[item]}>{item}</a>
+      </li>;
+    });
+  };
+
   return <footer className="footer">
     <div className="footer__container container">
       <div className="footer__column footer__column--left">
@@ -15,18 +24,7 @@ const Footer = () => {
           </a>
         </div>
         <ul className="footer__nav footer-nav">
-          <li className="footer-nav__item">
-            <a className="footer-nav__link" href="/">Услуги</a>
-          </li>
-          <li className="footer-nav__item">
-            <a className="footer-nav__link" href="/">Рассчитать кредит</a>
-          </li>
-          <li className="footer-nav__item">
-            <a className="footer-nav__link" href="/">Контакты</a>
-          </li>
-          <li className="footer-nav__item">
-            <a className="footer-nav__link" href="/">Задать вопрос</a>
-          </li>
+          {getNavItems()}
         </ul>
         <div className="footer__info">
           <address className="footer__address">150015, г. Москва, ул. Московская, д. 32</address>

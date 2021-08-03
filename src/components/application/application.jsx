@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {Words} from '../../const';
+import {PrefixTel, PREFIX_APPLICATION_NUMBER, Words} from '../../const';
 import {changeEmail, changeName, changeTelephone} from '../../store/action';
 import {getNumberWithSpaces} from '../../utils/common';
 import PropTypes from 'prop-types';
@@ -34,7 +34,7 @@ const Application = ({isFormFieldFail}) => {
 
   const onTelFocus = (evt) => {
     if (!/^\+\d*$/.test(evt.target.value)) {
-      evt.target.value = `+7`;
+      evt.target.value = PrefixTel.RUS;
     }
   };
 
@@ -42,7 +42,7 @@ const Application = ({isFormFieldFail}) => {
     const applicationString = applicationNumber.toString();
     if (applicationString.length < 4) {
       const needAdd = 4 - applicationString.length;
-      const prefix = new Array(needAdd).fill(`0`).join(``);
+      const prefix = new Array(needAdd).fill(PREFIX_APPLICATION_NUMBER).join(``);
       return prefix + applicationString;
     }
     return applicationString;

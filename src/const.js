@@ -4,6 +4,12 @@ export const ScreenWidth = {
   DESKTOP: `1024px`
 };
 
+export const Purposes = {
+  'initial': `Выберите цель кредита`,
+  'mortgage': `Ипотечное кредитование`,
+  'automotive': `Автомобильное кредитование`
+};
+
 export const TabsTitles = {
   CONTRIBUTION: `Вклады`,
   CREDITS: `Кредиты`,
@@ -59,11 +65,11 @@ export const Values = {
     MIN_PERCENT: `20`,
     MIN_CREDIT: 200000,
     INTEREST_RATE: {
-      FEE: 2000000,
+      CASCO_AND_LIFE_INSURANCE: 3.5,
+      CASCO_OR_LIFE_INSURANCE: 8.5,
       HIGHER_FEE: 15,
       LOWER_FEE: 16,
-      CASCO_OR_LIFE_INSURANCE: 8.5,
-      CASCO_AND_LIFE_INSURANCE: 3.5
+      FEE: 2000000
     }
   }
 };
@@ -71,7 +77,7 @@ export const Values = {
 export const MATERNAL_CAPITAL = 470000;
 
 export const InitialState = {
-  purpose: null,
+  purpose: `initial`,
   values: null,
   property: 0,
   fee: 0,
@@ -81,4 +87,42 @@ export const InitialState = {
   percent: 0,
   term: 5,
   amountOfCredit: 0,
+};
+
+export const Coordinates = {
+  MOSCOW: [55.558741, 37.378847],
+  SARATOV: [51.5406, 46.0086],
+  KAZAN: [55.7887, 49.1221],
+  TYUMEN: [57.15, 65.54],
+  OMSK: [54.9924, 73.3686]
+};
+
+export const MAP_ICON_SIZE = [32, 40];
+
+export const PrefixTel = {
+  RUS: `+7`
+};
+
+export const PREFIX_APPLICATION_NUMBER = `0`;
+
+
+export const TermYears = {
+  MIN: `5`,
+  MAX: `30`
+};
+
+
+export const NavigationItems = {
+  HEADER: {
+    'Услуги': `#`,
+    'Рассчитать кредит': `#`,
+    'Конвертер валют': `#`,
+    'Контакты': `#`
+  },
+  FOOTER: {
+    'Услуги': `#`,
+    'Рассчитать кредит': `#`,
+    'Контакты': `#`,
+    'Задать вопрос': `#`
+  }
 };

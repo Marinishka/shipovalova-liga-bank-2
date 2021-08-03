@@ -91,8 +91,9 @@
   font-weight: normal;
   font-size: 12px;
   line-height: 1.5;
-  font-family: "Roboto-Regular", "Arial", sans-serif;
   color: $halfhidden;
+
+@extend .font-family--regular;
 }
 
 .footer__info {
@@ -136,11 +137,10 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 1.2;
-  font-family: "Roboto-Medium", "Arial", sans-serif;
   text-decoration: none;
 
+@extend .font-family--medium;
 @extend .link;
-
   @media (min-width: $width-tablet) {
     font-size: 16px;
   }
@@ -160,9 +160,9 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1.2;
-  font-family: "Roboto-Medium", "Arial", sans-serif;
   text-decoration: none;
 
+@extend .font-family--medium;
 @extend .link;
 }
 
