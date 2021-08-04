@@ -64,6 +64,8 @@ const Result = () => {
   };
 
   const getIsParametersSatisfying = () => {
+    // eslint-disable-next-line
+    debugger;
     const result = amountOfCredit > values.MIN_CREDIT;
     dispatch(changeSatisfyingParameters(result));
     if (!result) {

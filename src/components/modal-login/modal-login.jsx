@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {KeyCodes} from '../../const';
+import {KeyCodes, ImgLogoModal} from '../../const';
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
 import {enterLogin, enterPassword} from '../../store/action';
@@ -68,7 +68,7 @@ const ModalLogin = ({isModalOpened, setIsModalOpened}) => {
 
   return <div className="modal-login" onClick={onOverlayClick}>
     <form className="modal-login__wrapper" onSubmit={onSubmit}>
-      <img className="modal-login__logo" width="151" height="31" src="./img/logo-modal.png" alt="Логотип Лига Банк"></img>
+      <img className="modal-login__logo" width={ImgLogoModal.WIDTH} height={ImgLogoModal.HEIGHT} src="./img/logo-modal.png" alt={ImgLogoModal.ALT}></img>
       <button className="modal-login__btn-close" type="button" aria-label="Закрыть окно авторизации" onClick={onBtnCloseClick}></button>
       <label className="modal-login__label" htmlFor="name">Логин</label>
       <input className="modal-login__input modal-login__input--name"

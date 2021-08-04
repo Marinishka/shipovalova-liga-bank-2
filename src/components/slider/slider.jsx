@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {KeyCodes} from '../../const';
+import {ImgsSlider, KeyCodes} from '../../const';
 import {HashLink} from 'react-router-hash-link';
 
 const Slider = () => {
@@ -39,8 +39,8 @@ const Slider = () => {
           <h2 className="slider__title">Лига банк</h2>
           <p className="slider__text">Кредиты на любой случай</p>
           <HashLink className="slider__link" to="/#calculator">Рассчитать кредит</HashLink>
-          <img className="slider__card slider__card--white" width="335" height="228" src="./img/white_card.png" alt="Белая карта банка"></img>
-          <img className="slider__card slider__card--black" width="335" height="228" src="./img/black_card.png" alt="Черная карта банка"></img>
+          <img className="slider__card slider__card--white" width={ImgsSlider.WHITE_CARD.WIDTH} height={ImgsSlider.WHITE_CARD.HEIGHT} src="./img/white_card.png" alt={ImgsSlider.WHITE_CARD.ALT}></img>
+          <img className="slider__card slider__card--black" width={ImgsSlider.BLACK_CARD.WIDTH} height={ImgsSlider.BLACK_CARD.HEIGHT} src="./img/black_card.png" alt={ImgsSlider.BLACK_CARD.ALT}></img>
         </div>
       </li>
       <li className={`slider__item slider__item--confidence ${activeSlide === 1 ? `slider__item--active` : ``}`}>
