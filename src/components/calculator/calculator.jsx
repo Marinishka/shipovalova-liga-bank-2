@@ -34,6 +34,8 @@ const Calculator = ({setIsPopupOpen}) => {
 
   const onPurposeChange = (evt) => {
     if (evt.target.tagName === `INPUT`) {
+    // eslint-disable-next-line
+    debugger;
       dispatch(changePurpose(evt.target.value));
       purposeOptions.current.classList.toggle(`calculator__options--visible`);
       for (let item in Values) {

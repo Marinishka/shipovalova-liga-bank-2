@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import login from './../../assets/img/icons/icon-login.svg';
-import {NavigationItems, ScreenWidth} from './../../const.js';
+import {IconLogin, ImgLogo, NavigationItems, ScreenWidth} from './../../const.js';
 import PropTypes from 'prop-types';
 
 const Header = ({isModalOpened, setIsModalOpened}) => {
@@ -40,7 +40,7 @@ const Header = ({isModalOpened, setIsModalOpened}) => {
           <picture>
             <source media={`(min-width: ${ScreenWidth.TABLET})`} srcSet="./img/logo-tablet.png"></source>
             <source media={`(min-width: ${ScreenWidth.DESKTOP})`} srcSet="./img/logo-desktop.png"></source>
-            <img className="header__logo" width="116" height="19" src="./img/logo-mobile.png" alt="Логотип Лига Банк"></img>
+            <img className="header__logo" width={ImgLogo.WIDTH} height={ImgLogo.HEIGHT} src="./img/logo-mobile.png" alt={ImgLogo.ALT}></img>
           </picture>
         </a>
       </div>
@@ -50,7 +50,7 @@ const Header = ({isModalOpened, setIsModalOpened}) => {
         </ul>
         <div className="header__user header-user" onClick={onLoginClick}>
           <a className="header-user__link" href="/">
-            <img className="header-user__icon" width="14" height="16" src={login} alt="Войти в Интернет-банк"></img>
+            <img className="header-user__icon" width={IconLogin.WIDTH} height={IconLogin.HEIGHT} src={login} alt={IconLogin.ALT}></img>
             <span className="header-user__label">Войти в Интернет-банк</span>
           </a>
         </div>

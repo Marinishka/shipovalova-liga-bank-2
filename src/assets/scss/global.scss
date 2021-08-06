@@ -115,15 +115,15 @@ html {
 
 .font-family--regular {
   font-weight: 400;
-  font-family: $font-family;
+  font-family: $font-family-regular;
 }
 
 .font-family--medium {
   font-weight: 500;
-  font-family: $font-family;
+  font-family: $font-family-medium;
 }
 
 .font-family--bold {
-  font-weight: 600;
-  font-family: $font-family;
+  font-weight: 700;
+  font-family: $font-family-bold;
 }

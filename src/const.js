@@ -111,7 +111,6 @@ export const TermYears = {
   MAX: `30`
 };
 
-
 export const NavigationItems = {
   HEADER: {
     'Услуги': `#`,
@@ -124,5 +123,36 @@ export const NavigationItems = {
     'Рассчитать кредит': `#`,
     'Контакты': `#`,
     'Задать вопрос': `#`
+  }
+};
+
+export const ImgLogo = {
+  WIDTH: `116`,
+  HEIGHT: `19`,
+  ALT: `Логотип Лига Банк`
+};
+
+export const IconLogin = {
+  WIDTH: `14`,
+  HEIGHT: `16`,
+  ALT: `Войти в Интернет-банк`
+};
+
+export const ImgLogoModal = {
+  WIDTH: `151`,
+  HEIGHT: `31`,
+  ALT: `Логотип Лига Банк`
+};
+
+export const ImgsSlider = {
+  WHITE_CARD: {
+    WIDTH: `335`,
+    HEIGHT: `228`,
+    ALT: `Белая карта банка`
+  },
+  BLACK_CARD: {
+    WIDTH: `335`,
+    HEIGHT: `228`,
+    ALT: `Черная карта банка`
   }
 };
