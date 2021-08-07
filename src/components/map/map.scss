@@ -8,9 +8,9 @@
     padding-left: 45px;
   }
   @media (min-width: $width-desktop) {
-    max-width: $width-desktop;
+    max-width: $max-width;
     padding-right: 15px;
-    padding-bottom: 110px;
+    padding-bottom: 111px;
     padding-left: 15px;
   }
 }
@@ -27,12 +27,12 @@
     margin-bottom: 36px;
     padding: 0;
 
-    font-size: 32px;
+    font-size: 31px;
   }
   @media (min-width: $width-desktop) {
     margin-bottom: 60px;
 
-    font-size: 41px;
+    font-size: 39px;
   }
 }
 

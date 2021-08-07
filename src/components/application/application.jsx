@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {PrefixTel, PREFIX_APPLICATION_NUMBER, Words} from '../../const';
 import {changeEmail, changeName, changeTelephone} from '../../store/action';
-import {getNumberWithSpaces} from '../../utils/common';
+import {getPhrase} from '../../utils/common';
 import PropTypes from 'prop-types';
 
 const Application = ({isFormFieldFail}) => {
@@ -17,6 +17,7 @@ const Application = ({isFormFieldFail}) => {
 
   const nameInput = useRef(null);
   const emailInput = useRef(null);
+  const telInput = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -51,8 +52,10 @@ const Application = ({isFormFieldFail}) => {
   useEffect(() => {
     nameInput.current.classList.remove(`input--invalid`);
     emailInput.current.classList.remove(`input--invalid`);
+    telInput.current.classList.remove(`input--invalid`);
     nameInput.current.classList.add(`input--valid`);
     emailInput.current.classList.add(`input--valid`);
+    telInput.current.classList.add(`input--valid`);
     if (isFormFieldFail) {
       if (name === ``) {
         nameInput.current.classList.remove(`input--valid`);
@@ -61,6 +64,10 @@ const Application = ({isFormFieldFail}) => {
       if (email === ``) {
         emailInput.current.classList.remove(`input--valid`);
         emailInput.current.classList.add(`input--invalid`);
+      }
+      if (telephone === ``) {
+        telInput.current.classList.remove(`input--valid`);
+        telInput.current.classList.add(`input--invalid`);
       }
     }
   }, [isFormFieldFail]);
@@ -77,15 +84,15 @@ const Application = ({isFormFieldFail}) => {
         <dt className="application__term">Цель кредита</dt>
       </div>
       <div className="application__row">
-        <dd className="application__value">{getNumberWithSpaces(property)} рублей</dd>
+        <dd className="application__value">{getPhrase(property, `RUB`)}</dd>
         <dt className="application__term">Стоимость {Words[values.VALUE.toUpperCase()].PRICE}</dt>
       </div>
       <div className="application__row">
-        <dd className="application__value">{getNumberWithSpaces(fee)} рублей</dd>
+        <dd className="application__value">{getPhrase(fee, `RUB`)}</dd>
         <dt className="application__term">Первоначальный взнос</dt>
       </div>
       <div className="application__row">
-        <dd className="application__value">{term} лет</dd>
+        <dd className="application__value">{getPhrase(term, `YEAR`)}</dd>
         <dt className="application__term">Срок кредитования</dt>
       </div>
     </dl>
@@ -101,6 +108,7 @@ const Application = ({isFormFieldFail}) => {
     <div className="application__label-group">
       <label className="application__label application__label--tel" aria-label="Введите ваш телефон">
         <input className="application__input application__input--tel input--valid"
+          ref={telInput}
           type="tel"
           placeholder="Телефон"
           pattern="^\+?\d{1,2}\(?\d{3}\)?\d{3}-?\d{2}-?\d{2}$"

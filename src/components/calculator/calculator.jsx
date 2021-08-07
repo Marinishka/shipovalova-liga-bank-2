@@ -17,6 +17,7 @@ const Calculator = ({setIsPopupOpen}) => {
   const purpose = useSelector((state) => state.LOCAL.purpose);
 
   const [isFormFieldFail, setIsFormFieldFail] = useState(false);
+  const [isPropertyValid, setisPropertyValid] = useState(true);
 
   const purposeOptions = useRef(null);
 
@@ -34,8 +35,6 @@ const Calculator = ({setIsPopupOpen}) => {
 
   const onPurposeChange = (evt) => {
     if (evt.target.tagName === `INPUT`) {
-    // eslint-disable-next-line
-    debugger;
       dispatch(changePurpose(evt.target.value));
       purposeOptions.current.classList.toggle(`calculator__options--visible`);
       for (let item in Values) {
@@ -78,7 +77,7 @@ const Calculator = ({setIsPopupOpen}) => {
 
   return <section className="calculator" id="calculator">
     <h2 className="calculator__title">Кредитный калькулятор</h2>
-    <form className="calculator__form" method="POST" onSubmit={onSubmit}>
+    <form className="calculator__form" method="POST" onSubmit={onSubmit} noValidate>
       <div className="calculator__group calculator__group--step-1">
         <div className="calculator__cell">
           <h3 className="calculator__label-group calculator__label-group--step-1">Шаг 1. Цель кредита</h3>
@@ -91,9 +90,9 @@ const Calculator = ({setIsPopupOpen}) => {
               <input className="calculator__radio visually-hidden" type="radio" value="automotive" id="automotive"></input>
             </div>
           </div>
-          {values !== null ? <Parameters/> : ``}
+          {values !== null ? <Parameters isPropertyValid={isPropertyValid} setisPropertyValid={setisPropertyValid}/> : ``}
         </div>
-        {values !== null ? <Result/> : ``}
+        {values !== null && isPropertyValid ? <Result/> : ``}
       </div>
       {isOpenAnApplication ? <Application isFormFieldFail={isFormFieldFail}/> : ``}
     </form>

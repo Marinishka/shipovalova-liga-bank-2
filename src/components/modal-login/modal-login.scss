@@ -1,25 +1,21 @@
 .modal-login {
-  position: absolute;
-  z-index: 3;
-
+  display: flex;
   width: 100vw;
-  height: 100%;
+  min-height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
   background-color: $bg-block;
 }
 
 .modal-login__wrapper {
-  position: fixed;
-  top: 5vh;
-  left: calc(50vw - 145px);
-  z-index: 2;
+  position: relative;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 290px;
-  margin-right: auto;
-  margin-left: auto;
+  margin: auto;
   padding: 45px 16px 42px 16px;
 
   text-align: center;
@@ -28,16 +24,10 @@
   border: 4px solid $main-color;
 
   @media (min-width: $width-tablet) {
-    top: 10vh;
-    left: calc(50vw - 339px);
-
     width: 678px;
     padding: 55px 83px 45px 83px;
   }
   @media (min-width: $width-desktop) {
-    top: 15vh;
-    left: calc(50vw - 272px);
-
     width: 544px;
     padding: 56px 56px 45px 56px;
   }
@@ -215,6 +205,7 @@
   border-radius: 4px;
 
 @extend .font-family--medium;
+
   @media (min-width: $width-tablet) {
     order: 7;
     padding-bottom: 20px;

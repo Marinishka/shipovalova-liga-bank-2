@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
-import {getNumberWithSpaces} from '../../utils/common';
+import {getPhrase} from '../../utils/common';
 import {openApplication} from '../../store/action';
 import {Words} from '../../const';
 
@@ -19,7 +19,7 @@ const ResultSuccess = ({monthlyPayment, necessaryIncome, interestRate}) => {
     <dl className="result__list">
       <div className="result__group">
         <div className="result__cell">
-          <dd className="result__value">{getNumberWithSpaces(amountOfCredit)} рублей</dd>
+          <dd className="result__value">{getPhrase(amountOfCredit, `RUB`)}</dd>
           <dt className="result__term">Сумма {Words[values.VALUE.toUpperCase()].SUM}</dt>
         </div>
         <div className="result__cell">
@@ -29,11 +29,11 @@ const ResultSuccess = ({monthlyPayment, necessaryIncome, interestRate}) => {
       </div>
       <div className="result__group">
         <div className="result__cell">
-          <dd className="result__value">{getNumberWithSpaces(monthlyPayment)} рублей</dd>
+          <dd className="result__value">{getPhrase(monthlyPayment, `RUB`)}</dd>
           <dt className="result__term">Ежемесячный платеж</dt>
         </div>
         <div className="result__cell">
-          <dd className="result__value">{getNumberWithSpaces(necessaryIncome)} рублей</dd>
+          <dd className="result__value">{getPhrase(necessaryIncome, `RUB`)}</dd>
           <dt className="result__term">Необходимый доход</dt>
         </div>
       </div>

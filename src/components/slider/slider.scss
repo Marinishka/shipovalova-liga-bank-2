@@ -91,7 +91,7 @@
   }
 
   @media (min-width: $width-desktop) {
-    width: $width-desktop;
+    width: $max-width;
     padding: 101px 560px 113px 185px;
   }
 }
@@ -106,6 +106,7 @@
   text-transform: capitalize;
 
 @extend .font-family--bold;
+
   @media (min-width: $width-tablet) {
     font-size: 46px;
   }

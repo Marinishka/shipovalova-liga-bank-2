@@ -26,23 +26,31 @@ const Result = () => {
   };
 
   const getInterestRate = () => {
+    let newInterestRate;
     if (values.VALUE === `mortgage`) {
       if (Number((fee / (property * 0.01))) < values.INTEREST_RATE.FEE) {
         setInterestRate(values.INTEREST_RATE.LOWER_FEE);
-        return;
+        newInterestRate = values.INTEREST_RATE.LOWER_FEE;
+      } else {
+        setInterestRate(values.INTEREST_RATE.HIGHER_FEE);
+        newInterestRate = values.INTEREST_RATE.HIGHER_FEE;
       }
-      setInterestRate(values.INTEREST_RATE.HIGHER_FEE);
     } else {
       if (isCasco && isLifeInsurance) {
         setInterestRate(values.INTEREST_RATE.CASCO_AND_LIFE_INSURANCE);
+        newInterestRate = values.INTEREST_RATE.CASCO_AND_LIFE_INSURANCE;
       } else if (isCasco || isLifeInsurance) {
         setInterestRate(values.INTEREST_RATE.CASCO_OR_LIFE_INSURANCE);
+        newInterestRate = values.INTEREST_RATE.CASCO_OR_LIFE_INSURANCE;
       } else if (property < values.INTEREST_RATE.FEE) {
         setInterestRate(values.INTEREST_RATE.LOWER_FEE);
+        newInterestRate = values.INTEREST_RATE.LOWER_FEE;
       } else {
         setInterestRate(values.INTEREST_RATE.HIGHER_FEE);
+        newInterestRate = values.INTEREST_RATE.HIGHER_FEE;
       }
     }
+    return newInterestRate;
   };
 
   const getNecessaryIncome = (monthlyPay) => {
@@ -56,8 +64,8 @@ const Result = () => {
         maternalCapital = MATERNAL_CAPITAL;
       }
     }
-    dispatch(changeAmountOfCredit(property - fee - maternalCapital));
-    const monthlyInterestRate = interestRate * 0.01 / 12;
+    dispatch(changeAmountOfCredit(Math.ceil(property - fee - maternalCapital)));
+    const monthlyInterestRate = getInterestRate() * 0.01 / 12;
     const result = Math.ceil((property - fee - maternalCapital) * (monthlyInterestRate + monthlyInterestRate / (Math.pow((1 + monthlyInterestRate), getTermInMounth()) - 1)));
     getNecessaryIncome(result);
     return result;
@@ -73,7 +81,6 @@ const Result = () => {
   };
 
   useEffect(() => {
-    getInterestRate();
     setMonthlyPayment(getMonthlyPayment());
   }, [fee, term, isCasco, isLifeInsurance, values, isMaternalCapital]);
 

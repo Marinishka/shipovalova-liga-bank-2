@@ -23,7 +23,7 @@
     position: relative;
     bottom: 0;
 
-    max-width: $width-desktop;
+    max-width: $max-width;
     margin-right: auto;
     margin-left: auto;
     padding-right: 15px;
@@ -46,7 +46,7 @@
   @media (min-width: $width-desktop) {
     position: relative;
 
-    width: 293px;
+    width: 100%;
     height: auto;
     height: 100%;
     padding: 30px 15px 30px 15px;
@@ -75,6 +75,13 @@
   }
 }
 
+.tabs__item {
+  @media (min-width: $width-desktop) {
+    flex-grow: 1;
+    flex-basis: 200px;
+  }
+}
+
 .tabs__item:not(:last-child) {
   margin-right: 6px;
   @media (min-width: $width-tablet) {
@@ -96,6 +103,7 @@
   display: none;
 
 @extend .font-family--medium;
+
   @media (min-width: $width-desktop) {
     display: inline-block;
 
@@ -107,7 +115,7 @@
 
 .tabs__container {
   @media (min-width: $width-desktop) {
-    max-width: $width-desktop;
+    max-width: $max-width;
     margin-right: auto;
     margin-left: auto;
     padding-right: 15px;
@@ -116,6 +124,8 @@
 }
 
 .tab-item {
+  display: flex;
+  flex-direction: column;
   min-height: 362px;
   padding: 55px 15px 60px 14px;
 
@@ -127,7 +137,7 @@
   }
   @media (min-width: $width-desktop) {
     min-height: 410px;
-    padding-right: 679px;
+    padding-right: 58%;
     padding-left: 70px;
   }
 }
@@ -139,12 +149,12 @@
   background-size: $tab-img-width-mobile $tab-img-height-mobile;
   @media (min-width: $width-tablet) {
     background-image: url("./../../assets/img/piggybank-tablet.png");
-    background-position: 434px 60px;
+    background-position: right 45px top 60px;
     background-size: $tab-img-width-tablet $tab-img-height-tablet;
   }
   @media (min-width: $width-desktop) {
     background-image: url("./../../assets/img/piggybank-desktop.png");
-    background-position: 595px 59px;
+    background-position: right 135px top 59px;
     background-size: $tab-img-width-desktop $tab-img-height-desktop;
   }
 }
@@ -162,18 +172,18 @@
   background-size: $tab-img-width-mobile $tab-img-height-mobile;
   @media (min-width: $width-tablet) {
     background-image: url("./../../assets/img/car-tablet.png");
-    background-position: 434px 60px;
+    background-position: right 45px top 60px;
     background-size: $tab-img-width-tablet $tab-img-height-tablet;
   }
   @media (min-width: $width-desktop) {
     background-image: url("./../../assets/img/car-desktop.png");
-    background-position: 595px 59px;
+    background-position: right 135px top 59px;
     background-size: $tab-img-width-desktop $tab-img-height-desktop;
   }
 }
 
 .tab-item--credits .tab-item__title {
-  margin-right: 60px;
+  margin-right: 100px;
 }
 
 .tab-item--insurance {
@@ -183,12 +193,12 @@
   background-size: $tab-img-width-mobile $tab-img-height-mobile;
   @media (min-width: $width-tablet) {
     background-image: url("./../../assets/img/lock-tablet.png");
-    background-position: 434px 60px;
+    background-position: right 45px top 60px;
     background-size: $tab-img-width-tablet $tab-img-height-tablet;
   }
   @media (min-width: $width-desktop) {
     background-image: url("./../../assets/img/lock-desktop.png");
-    background-position: 595px 59px;
+    background-position: right 135px top 59px;
     background-size: $tab-img-width-desktop $tab-img-height-desktop;
   }
 }
@@ -207,12 +217,12 @@
   background-size: $tab-img-width-mobile $tab-img-height-mobile;
   @media (min-width: $width-tablet) {
     background-image: url("./../../assets/img/mobile-tablet.png");
-    background-position: 434px 60px;
+    background-position: right 45px top 60px;
     background-size: $tab-img-width-tablet $tab-img-height-tablet;
   }
   @media (min-width: $width-desktop) {
     background-image: url("./../../assets/img/mobile-desktop.png");
-    background-position: 595px 59px;
+    background-position: right 135px top 59px;
     background-size: $tab-img-width-desktop $tab-img-height-desktop;
   }
 }
@@ -245,7 +255,7 @@
 
 .tab-item__features {
   margin-top: 0;
-  margin-right: 55px;
+  margin-right: 21%;
   margin-bottom: 27px;
   padding-left: 0;
 
@@ -306,6 +316,7 @@
 .tab-item__link {
   display: block;
   width: 100%;
+  margin-top: auto;
   padding: 13px;
   padding-left: 5px;
 
@@ -349,6 +360,8 @@
 
 .tab-item__text {
   display: inline-block;
+  margin-top: auto;
+  margin-bottom: 0;
 
   font-size: 15px;
   line-height: 1.3;

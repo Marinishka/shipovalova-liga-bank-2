@@ -3,10 +3,11 @@ import login from './../../assets/img/icons/icon-login.svg';
 import {IconLogin, ImgLogo, NavigationItems, ScreenWidth} from './../../const.js';
 import PropTypes from 'prop-types';
 
-const Header = ({isModalOpened, setIsModalOpened}) => {
+const Header = ({isModalOpened, setIsModalOpened, setIsNavOpen}) => {
   const headerNavList = useRef(null);
   const headerNav = useRef(null);
   const close = useRef(null);
+  const headerContainer = useRef(null);
 
   const getNavItems = () => {
     return Object.keys(NavigationItems.HEADER).map((item) => {
@@ -17,24 +18,33 @@ const Header = ({isModalOpened, setIsModalOpened}) => {
   };
 
   const onOpenClick = () => {
+    setIsNavOpen(true);
+    headerContainer.current.classList.add(`header__container--open`);
     headerNavList.current.classList.add(`header-nav-list--visible`);
     headerNav.current.classList.add(`header-nav--open`);
     close.current.classList.add(`header__close--visible`);
   };
 
-  const onCloseClick = () => {
+  const closeNav = () => {
+    setIsNavOpen(false);
+    headerContainer.current.classList.remove(`header__container--open`);
     headerNavList.current.classList.remove(`header-nav-list--visible`);
     headerNav.current.classList.remove(`header-nav--open`);
     close.current.classList.remove(`header__close--visible`);
   };
 
+  const onCloseClick = () => {
+    closeNav();
+  };
+
   const onLoginClick = (evt) => {
     evt.preventDefault();
     setIsModalOpened(!isModalOpened);
+    closeNav();
   };
 
-  return <header className="header">
-    <div className="header__container container">
+  return <header className={`header ${isModalOpened ? `display--none` : ``}`}>
+    <div className="header__container container" ref={headerContainer}>
       <div className="header__logo-container">
         <a className="header__link-logo" href="/">
           <picture>
@@ -63,7 +73,8 @@ const Header = ({isModalOpened, setIsModalOpened}) => {
 
 Header.propTypes = {
   isModalOpened: PropTypes.bool.isRequired,
-  setIsModalOpened: PropTypes.func.isRequired
+  setIsModalOpened: PropTypes.func.isRequired,
+  setIsNavOpen: PropTypes.func.isRequired
 };
 
 export default Header;

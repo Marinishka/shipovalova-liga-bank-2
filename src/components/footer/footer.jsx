@@ -1,17 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {NavigationItems, ScreenWidth} from './../../const.js';
 
-const Footer = () => {
+const Footer = ({isModalOpened, isNavOpen}) => {
 
   const getNavItems = () => {
     return Object.keys(NavigationItems.FOOTER).map((item) => {
-      return <li className="header-nav-list__item" key={item}>
-        <a className="header-nav-list__link" href={NavigationItems.HEADER[item]}>{item}</a>
+      return <li className="footer-nav__item" key={item}>
+        <a className="footer-nav__link" href={NavigationItems.FOOTER[item]}>{item}</a>
       </li>;
     });
   };
 
-  return <footer className="footer">
+  return <footer className={`footer ${isModalOpened || isNavOpen ? `display--none` : ``}`}>
     <div className="footer__container container">
       <div className="footer__column footer__column--left">
         <div className="footer__logo">
@@ -78,6 +79,11 @@ const Footer = () => {
       </div>
     </div>
   </footer>;
+};
+
+Footer.propTypes = {
+  isModalOpened: PropTypes.bool.isRequired,
+  isNavOpen: PropTypes.bool.isRequired
 };
 
 export default Footer;
