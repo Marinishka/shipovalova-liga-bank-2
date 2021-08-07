@@ -105,10 +105,16 @@ export const PrefixTel = {
 
 export const PREFIX_APPLICATION_NUMBER = `0`;
 
+export const ERROR_MSG = `Некорректное значение`;
 
 export const TermYears = {
   MIN: `5`,
   MAX: `30`
+};
+
+export const WordForms = {
+  RUB: [` рубль`, ` рубля`, ` рублей`],
+  YEAR: [` год`, ` года`, ` лет`]
 };
 
 export const NavigationItems = {

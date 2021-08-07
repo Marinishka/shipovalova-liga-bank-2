@@ -83,6 +83,7 @@
     "info navigation"
     "info navigation"
     "info navigation"
+    "info navigation"
     "info navigation";
   }
 }
@@ -140,7 +141,9 @@
   text-decoration: none;
 
 @extend .font-family--medium;
+
 @extend .link;
+
   @media (min-width: $width-tablet) {
     font-size: 16px;
   }
@@ -163,6 +166,7 @@
   text-decoration: none;
 
 @extend .font-family--medium;
+
 @extend .link;
 }
 

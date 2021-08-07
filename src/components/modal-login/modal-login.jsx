@@ -18,11 +18,8 @@ const ModalLogin = ({isModalOpened, setIsModalOpened}) => {
 
   useEffect(() => {
     document.addEventListener(`keydown`, onEscClick);
-    document.firstElementChild.classList.add(`no-scroll`);
     return () => {
       document.removeEventListener(`keydown`, onEscClick);
-      window.onscroll = true;
-      document.firstElementChild.classList.remove(`no-scroll`);
     };
   }, []);
 
@@ -32,6 +29,7 @@ const ModalLogin = ({isModalOpened, setIsModalOpened}) => {
 
   const changePassword = (evt) => {
     setPasswordInput(evt.target.value);
+
   };
 
   const onEscClick = (evt) => {
@@ -54,9 +52,10 @@ const ModalLogin = ({isModalOpened, setIsModalOpened}) => {
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    if (password.length > 0 && login.length > 0) {
-      dispatch(enterLogin(login));
-      dispatch(enterPassword(password));
+    if (loginInput.length > 0 && passwordInput.length > 0) {
+      dispatch(enterLogin(loginInput));
+      dispatch(enterPassword(passwordInput));
+      setIsModalOpened(!isModalOpened);
     }
   };
 
@@ -75,7 +74,6 @@ const ModalLogin = ({isModalOpened, setIsModalOpened}) => {
         type="text"
         id="name"
         autoFocus
-        value={loginInput}
         onInput={changeLogin}
         required></input>
       <label className="modal-login__label" htmlFor="password">Пароль</label>
@@ -84,7 +82,6 @@ const ModalLogin = ({isModalOpened, setIsModalOpened}) => {
           ref={passwordEl}
           type="password"
           id="password"
-          value={passwordInput}
           onInput={changePassword}
           required></input>
         <button className="modal-login__hide-password" type="button" aria-label="Скрыть пароль?" onClick={onHidePasswordClick}></button>
