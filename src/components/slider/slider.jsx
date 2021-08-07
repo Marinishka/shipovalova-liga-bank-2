@@ -3,7 +3,7 @@ import {ImgsSlider, KeyCodes} from '../../const';
 import {HashLink} from 'react-router-hash-link';
 
 const Slider = () => {
-  const [activeSlide, setActiveSlide] = useState(1);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const getNextSlide = () => {
     setActiveSlide((current) => {
