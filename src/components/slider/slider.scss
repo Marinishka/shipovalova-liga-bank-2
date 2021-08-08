@@ -24,7 +24,7 @@
 
   background: linear-gradient(rgba(32, 39, 179, 0) 36.31%, #2027b3), linear-gradient(rgba(56, 65, 255, 0) 66.3%, #3841ff 97.14%), linear-gradient(rgba(56, 65, 255, 0) 27.26%, #3841ff ), linear-gradient(rgba(32, 39, 179, 0) 36.31%, #2027b3), linear-gradient($main-color, $main-color);
   background-repeat: no-repeat;
-  background-position: bottom left calc(50% - 785px), bottom left calc(50% - 460px), bottom right calc(50% - 250px), bottom right calc(50% - 635px), center;
+  background-position: left calc(50% - 785px) bottom, left calc(50% - 460px) bottom, right calc(50% - 250px) bottom, right calc(50% - 635px) bottom, center;
   background-size: 500px 100%, 150px 269px, 270px 269px, 500px 100%, 100%;
 }
 
