@@ -1,4 +1,4 @@
-import {changeAmountOfCredit, changeApplicationNumber, changeCasco, changeEmail, changeFee, changeLifeInsurance, changeMaternalCapital, changeName, changePercent, changeProperty, changePurpose, changeSatisfyingParameters, changeTelephone, changeTerm, changeValues, enterLogin, enterPassword, getInitialState, openApplication} from '../action';
+import {addValueInTable, changeAmountOfCredit, changeApplicationNumber, changeCasco, changeEmail, changeFee, changeLifeInsurance, changeMaternalCapital, changeName, changePercent, changeProperty, changePurpose, changeSatisfyingParameters, changeTelephone, changeTerm, changeValues, enterLogin, enterPassword, getInitialState, openApplication, resetTable} from '../action';
 import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
@@ -19,7 +19,8 @@ const initialState = {
   telephone: ``,
   applicationNumber: 1,
   login: ``,
-  password: ``
+  password: ``,
+  table: []
 };
 
 const localState = createReducer(initialState, (builder) => {
@@ -82,6 +83,17 @@ const localState = createReducer(initialState, (builder) => {
         state,
         action.payload
     );
+  });
+  builder.addCase(addValueInTable, (state, action) => {
+    if (state.table.length < 10) {
+      state.table.unshift(action.payload);
+    } else {
+      state.table.pop();
+      state.table.unshift(action.payload);
+    }
+  });
+  builder.addCase(resetTable, (state, action) => {
+    state.table = action.payload;
   });
 });
 

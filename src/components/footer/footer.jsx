@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import {NavigationItems, ScreenWidth} from './../../const.js';
 
 const Footer = ({isModalOpened, isNavOpen}) => {
@@ -7,7 +8,7 @@ const Footer = ({isModalOpened, isNavOpen}) => {
   const getNavItems = () => {
     return Object.keys(NavigationItems.FOOTER).map((item) => {
       return <li className="footer-nav__item" key={item}>
-        <a className="footer-nav__link" href={NavigationItems.FOOTER[item]}>{item}</a>
+        <Link className="footer-nav__link" to={NavigationItems.FOOTER[item]}>{item}</Link>
       </li>;
     });
   };

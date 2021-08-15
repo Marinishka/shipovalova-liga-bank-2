@@ -38,7 +38,7 @@ const Slider = () => {
         <div className="slider__wrapper">
           <h2 className="slider__title">Лига банк</h2>
           <p className="slider__text">Кредиты на любой случай</p>
-          <HashLink className="slider__link" to="/#calculator">Рассчитать кредит</HashLink>
+          <HashLink className="slider__link" to="/calculator#calculator">Рассчитать кредит</HashLink>
           <img className="slider__card slider__card--white" width={ImgsSlider.WHITE_CARD.WIDTH} height={ImgsSlider.WHITE_CARD.HEIGHT} src="./img/white_card.png" alt={ImgsSlider.WHITE_CARD.ALT}></img>
           <img className="slider__card slider__card--black" width={ImgsSlider.BLACK_CARD.WIDTH} height={ImgsSlider.BLACK_CARD.HEIGHT} src="./img/black_card.png" alt={ImgsSlider.BLACK_CARD.ALT}></img>
         </div>
@@ -53,7 +53,7 @@ const Slider = () => {
         <div className="slider__wrapper">
           <h2 className="slider__title">Лига банк</h2>
           <p className="slider__text">Всегда рядом</p>
-          <HashLink className="slider__link" to="/#map">Найти отделение</HashLink>
+          <HashLink className="slider__link" to="/calculator#map">Найти отделение</HashLink>
         </div>
       </li>
     </ul>

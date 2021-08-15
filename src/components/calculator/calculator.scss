@@ -1,16 +1,15 @@
 .calculator {
   padding-top: 55px;
-  padding-bottom: 56px;
 
 @extend .container;
 
   @media (min-width: $width-tablet) {
     padding-top: 73px;
-    padding-bottom: 73px;
+
   }
   @media (min-width: $width-desktop) {
     padding-top: 101px;
-    padding-bottom: 102px;
+
   }
 }
 

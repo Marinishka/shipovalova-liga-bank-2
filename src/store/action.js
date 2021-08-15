@@ -1,5 +1,5 @@
 import {createAction} from '@reduxjs/toolkit';
-import {InitialState} from '../const';
+import {InitialState, INITIAL_TABLE} from '../const';
 
 export const ActionType = {
   CHANGE_PURPOSE: `local/porpose`,
@@ -20,7 +20,12 @@ export const ActionType = {
   CHANGE_APPLICATION_NUMBER: `local/applicationNumber`,
   ENTER_LOGIN: `local/login`,
   ENTER_PASSWORD: `local/password`,
-  GET_INITIAL_STATE: `local/state`
+  GET_INITIAL_STATE: `local/state`,
+  LOAD_VALUTE_LAST_DAY: `data/lastDay`,
+  LOAD_SOME_LAST_DAY: `data/lastDays`,
+  ADD_VALUE_IN_TABLE: `localState/addValueInTable`,
+  DELETE_LAST_VALUE: `localState/deleteLastValue`,
+  RESET_TABLE: `localState/resetTable`
 };
 
 export const changePurpose = createAction(ActionType.CHANGE_PURPOSE, (data) => {
@@ -136,3 +141,33 @@ export const getInitialState = (createAction(ActionType.GET_INITIAL_STATE, () =>
     payload: InitialState
   };
 }));
+
+export const loadValuteLastDay = createAction(ActionType.LOAD_VALUTE_LAST_DAY, (data) => {
+  return {
+    payload: data
+  };
+});
+
+export const loadSomeLastDay = createAction(ActionType.LOAD_SOME_LAST_DAY, (data) => {
+  return {
+    payload: data
+  };
+});
+
+export const addValueInTable = createAction(ActionType.ADD_VALUE_IN_TABLE, (date, valueInput, valuteInput, valueOutput, valuteOutput) => {
+  return {
+    payload: {
+      date,
+      valueInput,
+      valuteInput,
+      valueOutput,
+      valuteOutput
+    }
+  };
+});
+
+export const resetTable = createAction(ActionType.RESET_TABLE, (table = INITIAL_TABLE) => {
+  return {
+    payload: table
+  };
+});

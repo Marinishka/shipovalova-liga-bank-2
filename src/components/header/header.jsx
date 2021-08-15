@@ -1,18 +1,36 @@
 import React, {useRef} from 'react';
-import login from './../../assets/img/icons/icon-login.svg';
-import {IconLogin, ImgLogo, NavigationItems, ScreenWidth} from './../../const.js';
 import PropTypes from 'prop-types';
+import {Link, useLocation} from 'react-router-dom';
+import login from './../../assets/img/icons/icon-login.svg';
+import {IconLogin, ImgLogo, NavigationItems, Routes, ScreenWidth} from './../../const.js';
 
 const Header = ({isModalOpened, setIsModalOpened, setIsNavOpen}) => {
   const headerNavList = useRef(null);
   const headerNav = useRef(null);
   const close = useRef(null);
   const headerContainer = useRef(null);
+  const location = useLocation().pathname;
+
+  const getLogo = () => {
+    return location === Routes.MAIN
+      ? <picture className="header__link-logo">
+        <source media={`(min-width: ${ScreenWidth.TABLET})`} srcSet="./img/logo-tablet.png"></source>
+        <source media={`(min-width: ${ScreenWidth.DESKTOP})`} srcSet="./img/logo-desktop.png"></source>
+        <img className="header__logo" width={ImgLogo.WIDTH} height={ImgLogo.HEIGHT} src="./img/logo-mobile.png" alt={ImgLogo.ALT}></img>
+      </picture>
+      : <Link className="header__link-logo" to={Routes.MAIN}>
+        <picture>
+          <source media={`(min-width: ${ScreenWidth.TABLET})`} srcSet="./img/logo-tablet.png"></source>
+          <source media={`(min-width: ${ScreenWidth.DESKTOP})`} srcSet="./img/logo-desktop.png"></source>
+          <img className="header__logo" width={ImgLogo.WIDTH} height={ImgLogo.HEIGHT} src="./img/logo-mobile.png" alt={ImgLogo.ALT}></img>
+        </picture>
+      </Link>;
+  };
 
   const getNavItems = () => {
     return Object.keys(NavigationItems.HEADER).map((item) => {
       return <li className="header-nav-list__item" key={item}>
-        <a className="header-nav-list__link" href={NavigationItems.HEADER[item]}>{item}</a>
+        <Link className={`header-nav-list__link ${NavigationItems.HEADER[item] === location ? `header-nav-list__link--active` : ``}`} to={NavigationItems.HEADER[item]}>{item}</Link>
       </li>;
     });
   };
@@ -46,13 +64,7 @@ const Header = ({isModalOpened, setIsModalOpened, setIsNavOpen}) => {
   return <header className={`header ${isModalOpened ? `display--none` : ``}`}>
     <div className="header__container container" ref={headerContainer}>
       <div className="header__logo-container">
-        <a className="header__link-logo" href="/">
-          <picture>
-            <source media={`(min-width: ${ScreenWidth.TABLET})`} srcSet="./img/logo-tablet.png"></source>
-            <source media={`(min-width: ${ScreenWidth.DESKTOP})`} srcSet="./img/logo-desktop.png"></source>
-            <img className="header__logo" width={ImgLogo.WIDTH} height={ImgLogo.HEIGHT} src="./img/logo-mobile.png" alt={ImgLogo.ALT}></img>
-          </picture>
-        </a>
+        {getLogo()}
       </div>
       <nav className="header__nav header-nav" ref={headerNav}>
         <ul className="header-nav__list header-nav-list" ref={headerNavList}>
