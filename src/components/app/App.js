@@ -13,14 +13,14 @@ import Slider from '../slider/slider';
 import MapElement from '../map/map';
 
 function App() {
-  const [isModalOpened, setIsModalOpened] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
     <BrowserRouter history={browserHistory}>
-      <Header isModalOpened={isModalOpened} setIsModalOpened={setIsModalOpened} isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen}/>
-      <main className={`main ${isModalOpened || isNavOpen ? `display--none` : ``}`}>
+      <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen}/>
+      <main className={`main ${isModalOpen || isNavOpen ? `display--none` : ``}`}>
         <Switch>
           <Route path={Routes.MAIN} exact render={() => {
             return <>
@@ -42,8 +42,8 @@ function App() {
           }}/>
         </Switch>
       </main>
-      <Footer isModalOpened={isModalOpened} isNavOpen={isNavOpen}/>
-      {isModalOpened ? <ModalLogin isModalOpened={isModalOpened} setIsModalOpened={setIsModalOpened}/> : ``}
+      <Footer isModalOpen={isModalOpen} isNavOpen={isNavOpen}/>
+      {isModalOpen ? <ModalLogin isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/> : ``}
       {isPopupOpen ? <PopupThanks isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen}/> : ``}
     </BrowserRouter>
   );

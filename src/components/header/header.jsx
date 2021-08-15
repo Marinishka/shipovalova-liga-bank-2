@@ -4,7 +4,7 @@ import {Link, useLocation} from 'react-router-dom';
 import login from './../../assets/img/icons/icon-login.svg';
 import {IconLogin, ImgLogo, NavigationItems, Routes, ScreenWidth} from './../../const.js';
 
-const Header = ({isModalOpened, setIsModalOpened, setIsNavOpen}) => {
+const Header = ({isModalOpen, setIsModalOpen, setIsNavOpen}) => {
   const headerNavList = useRef(null);
   const headerNav = useRef(null);
   const close = useRef(null);
@@ -57,11 +57,11 @@ const Header = ({isModalOpened, setIsModalOpened, setIsNavOpen}) => {
 
   const onLoginClick = (evt) => {
     evt.preventDefault();
-    setIsModalOpened(!isModalOpened);
+    setIsModalOpen(!isModalOpen);
     closeNav();
   };
 
-  return <header className={`header ${isModalOpened ? `display--none` : ``}`}>
+  return <header className={`header ${isModalOpen ? `display--none` : ``}`}>
     <div className="header__container container" ref={headerContainer}>
       <div className="header__logo-container">
         {getLogo()}
@@ -84,8 +84,8 @@ const Header = ({isModalOpened, setIsModalOpened, setIsNavOpen}) => {
 };
 
 Header.propTypes = {
-  isModalOpened: PropTypes.bool.isRequired,
-  setIsModalOpened: PropTypes.func.isRequired,
+  isModalOpen: PropTypes.bool.isRequired,
+  setIsModalOpen: PropTypes.func.isRequired,
   setIsNavOpen: PropTypes.func.isRequired
 };
 
