@@ -2,14 +2,18 @@ import React, {useRef, useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import Checkboxes from './../checkboxes/checkboxes';
-import {changeFee, changePercent, changeProperty, changeTerm, openApplication} from '../../store/action';
+import {changePercent, changeTerm, openApplication} from '../../store/action';
 import {getNumberWithSpaces, getPhrase, getStrToNum} from '../../utils/common';
 import {ERROR_MSG, TermYears} from '../../const';
 
-const Parameters = ({isPropertyValid, setisPropertyValid}) => {
+const Parameters = ({
+  isPropertyValid,
+  setisPropertyValid,
+  property,
+  setProperty,
+  fee,
+  setFee}) => {
   const values = useSelector((state) => state.LOCAL.values);
-  const property = useSelector((state) => state.LOCAL.property);
-  const fee = useSelector((state) => state.LOCAL.fee);
   const percent = useSelector((state) => state.LOCAL.percent);
   const term = useSelector((state) => state.LOCAL.term);
 
@@ -57,10 +61,10 @@ const Parameters = ({isPropertyValid, setisPropertyValid}) => {
         return;
       }
       propertyInput.current.value = getPhrase(PRICE.MIN, `RUB`);
-      dispatch(changeProperty(PRICE.MIN));
+      setProperty(PRICE.MIN);
       const newFee = Math.ceil(PRICE.MIN * percent * 0.01);
       feeInput.current.value = getPhrase(newFee, `RUB`);
-      dispatch(changeFee(newFee));
+      setFee(newFee);
       setFeeMin(newFee);
       setFeeMax(PRICE.MIN);
       inputPropertyNotValid();
@@ -71,13 +75,13 @@ const Parameters = ({isPropertyValid, setisPropertyValid}) => {
     setisPropertyValid(true);
     propertyInput.current.classList.remove(`input--invalid`);
     propertyInput.current.classList.add(`input--valid`);
-    dispatch(changeProperty(value));
+    setProperty(value);
     propertyInput.current.value = getPhrase(value, `RUB`);
     const newFee = Math.ceil(value * values.MIN_PERCENT * 0.01);
     percentInput.current.value = values.MIN_PERCENT;
     dispatch(changePercent(values.MIN_PERCENT));
     feeInput.current.value = getPhrase(newFee, `RUB`);
-    dispatch(changeFee(newFee));
+    setFee(newFee);
     setFeeMin(newFee);
     setFeeMax(value);
   };
@@ -93,14 +97,14 @@ const Parameters = ({isPropertyValid, setisPropertyValid}) => {
   const onPercentChange = (evt) => {
     dispatch(changePercent(evt.target.value));
     const newFee = Math.ceil(property * evt.target.value * 0.01);
-    dispatch(changeFee(newFee));
+    setFee(newFee);
     feeInput.current.value = getPhrase(newFee, `RUB`);
   };
 
   const onFeeChange = (evt) => {
     const feeInputValue = getStrToNum(evt.target.value);
     if (feeInputValue >= fee && feeInputValue <= Number(property)) {
-      dispatch(changeFee(feeInputValue));
+      setFee(feeInputValue);
       feeInput.current.value = getPhrase(feeInputValue, `RUB`);
       const newPercent = Math.ceil(feeInputValue / property * 100);
       dispatch(changePercent(newPercent));
@@ -108,7 +112,7 @@ const Parameters = ({isPropertyValid, setisPropertyValid}) => {
       return;
     }
     const newFee = Math.ceil(property * values.MIN_PERCENT * 0.01);
-    dispatch(changeFee(newFee));
+    setFee(newFee);
     feeInput.current.value = getPhrase(newFee, `RUB`);
     percentInput.current.value = values.MIN_PERCENT;
     dispatch(changePercent(values.MIN_PERCENT));
@@ -138,10 +142,10 @@ const Parameters = ({isPropertyValid, setisPropertyValid}) => {
     propertyInput.current.type = `text`;
     feeInput.current.type = `text`;
     termInput.current.type = `text`;
-    dispatch(changeProperty(Number(PRICE.MIN)));
+    setProperty(Number(PRICE.MIN));
     dispatch(changePercent(values.MIN_PERCENT));
     const newFee = Math.ceil(PRICE.MIN * values.MIN_PERCENT * 0.01);
-    dispatch(changeFee(newFee));
+    setFee(newFee);
     percentInput.current.value = values.MIN_PERCENT;
     propertyInput.current.value = getPhrase(PRICE.MIN, `RUB`);
     feeInput.current.value = getPhrase(newFee, `RUB`);
@@ -166,8 +170,7 @@ const Parameters = ({isPropertyValid, setisPropertyValid}) => {
           id="property value"
           name="property"
           defaultValue={property}
-          onBlur={onPropertyChange}
-        >
+          onBlur={onPropertyChange}>
         </input>
       </div>
       <p className="calculator__prompt">От {getNumberWithSpaces(PRICE.MIN)} до {getNumberWithSpaces(PRICE.MAX)} рублей</p>
@@ -223,7 +226,11 @@ const Parameters = ({isPropertyValid, setisPropertyValid}) => {
 
 Parameters.propTypes = {
   setisPropertyValid: PropTypes.func.isRequired,
-  isPropertyValid: PropTypes.bool.isRequired
+  isPropertyValid: PropTypes.bool.isRequired,
+  property: PropTypes.number.isRequired,
+  setProperty: PropTypes.func.isRequired,
+  fee: PropTypes.number.isRequired,
+  setFee: PropTypes.func.isRequired
 };
 
 export default Parameters;

@@ -19,8 +19,8 @@ const Footer = ({isModalOpen, isNavOpen}) => {
         <div className="footer__logo">
           <a className="footer__link-logo" href="/">
             <picture>
-              <source media={`(min-width: ${ScreenWidth.TABLET})`} srcSet="./img/logo-tablet.png"></source>
-              <source media={`(min-width: ${ScreenWidth.DESKTOP})`} srcSet="./img/logo-desktop.png"></source>
+              <source media={`(min-width: ${ScreenWidth.TABLET}px)`} srcSet="./img/logo-tablet.png"></source>
+              <source media={`(min-width: ${ScreenWidth.DESKTOP}px)`} srcSet="./img/logo-desktop.png"></source>
               <img className="footer__img" width="115" height="17" src="./img/logo-mobile-footer.png" alt="Логотип Лига Банк"></img>
             </picture>
           </a>

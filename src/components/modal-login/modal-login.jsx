@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
 import {enterLogin, enterPassword} from '../../store/action';
 
-const ModalLogin = ({isModalOpened, setIsModalOpened}) => {
+const ModalLogin = ({isModalOpen, setIsModalOpen}) => {
 
   const login = useSelector((state) => state.LOCAL.login);
   const password = useSelector((state) => state.LOCAL.password);
@@ -34,12 +34,12 @@ const ModalLogin = ({isModalOpened, setIsModalOpened}) => {
 
   const onEscClick = (evt) => {
     if (evt.keyCode === KeyCodes.ESC) {
-      setIsModalOpened(!isModalOpened);
+      setIsModalOpen(!isModalOpen);
     }
   };
 
   const onBtnCloseClick = () => {
-    setIsModalOpened(!isModalOpened);
+    setIsModalOpen(!isModalOpen);
   };
 
   const onHidePasswordClick = () => {
@@ -55,13 +55,13 @@ const ModalLogin = ({isModalOpened, setIsModalOpened}) => {
     if (loginInput.length > 0 && passwordInput.length > 0) {
       dispatch(enterLogin(loginInput));
       dispatch(enterPassword(passwordInput));
-      setIsModalOpened(!isModalOpened);
+      setIsModalOpen(!isModalOpen);
     }
   };
 
   const onOverlayClick = (evt) => {
     if (evt.target.classList.contains(`modal-login`)) {
-      setIsModalOpened(!isModalOpened);
+      setIsModalOpen(!isModalOpen);
     }
   };
 
@@ -93,8 +93,8 @@ const ModalLogin = ({isModalOpened, setIsModalOpened}) => {
 };
 
 ModalLogin.propTypes = {
-  isModalOpened: PropTypes.bool.isRequired,
-  setIsModalOpened: PropTypes.func.isRequired
+  isModalOpen: PropTypes.bool.isRequired,
+  setIsModalOpen: PropTypes.func.isRequired
 };
 
 export default ModalLogin;

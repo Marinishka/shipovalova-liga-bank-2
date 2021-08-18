@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import {KeyCodes, Purposes, Values} from '../../const';
-import {changeApplicationNumber, changePurpose, changeValues, getInitialState, openApplication} from './../../store/action';
+import {changeValues, getInitialState, openApplication} from './../../store/action';
 import Application from '../application/application';
 import Parameters from '../parameters/parameters';
 import Result from '../result/result';
@@ -13,11 +13,13 @@ const Calculator = ({setIsPopupOpen}) => {
   const name = useSelector((state) => state.LOCAL.name);
   const telephone = useSelector((state) => state.LOCAL.telephone);
   const email = useSelector((state) => state.LOCAL.email);
-  const applicationNumber = useSelector((state) => state.LOCAL.applicationNumber);
-  const purpose = useSelector((state) => state.LOCAL.purpose);
 
   const [isFormFieldFail, setIsFormFieldFail] = useState(false);
   const [isPropertyValid, setisPropertyValid] = useState(true);
+  const [purpose, setPurpose] = useState(`initial`);
+  const [applicationNumber, setApplicationNumber] = useState(1);
+  const [property, setProperty] = useState(0);
+  const [fee, setFee] = useState(0);
 
   const purposeOptions = useRef(null);
 
@@ -35,10 +37,12 @@ const Calculator = ({setIsPopupOpen}) => {
 
   const onPurposeChange = (evt) => {
     if (evt.target.tagName === `INPUT`) {
-      dispatch(changePurpose(evt.target.value));
+      setPurpose(evt.target.value);
       purposeOptions.current.classList.toggle(`calculator__options--visible`);
       for (let item in Values) {
         if (Values[item].VALUE === evt.target.value) {
+          setProperty(Values[item].PRICE.MIN);
+          setFee(Math.ceil(Values[item].PRICE.MIN * Values[item].MIN_PERCENT * 0.01));
           dispatch(changeValues(Values[item]));
         }
       }
@@ -47,9 +51,11 @@ const Calculator = ({setIsPopupOpen}) => {
 
   const onPurposeChangeKeydown = (evt) => {
     if (evt.keyCode === KeyCodes.ENTER) {
-      dispatch(changePurpose(evt.target.dataset.option));
+      setPurpose(evt.target.dataset.option);
       for (let item in Values) {
         if (Values[item].VALUE === evt.target.dataset.option) {
+          setProperty(Values[item].PRICE.MIN);
+          setFee(Math.ceil(Values[item].PRICE.MIN * Values[item].MIN_PERCENT * 0.01));
           dispatch(changeValues(Values[item]));
         }
       }
@@ -65,8 +71,11 @@ const Calculator = ({setIsPopupOpen}) => {
     setIsFormFieldFail(false);
     setTimeout(() => {
       if (isFieldsFilled()) {
-        dispatch(changeApplicationNumber(applicationNumber + 1));
+        setApplicationNumber(applicationNumber + 1);
         dispatch(openApplication(false));
+        setPurpose(`initial`);
+        setFee(0);
+        setProperty(0);
         dispatch(getInitialState());
         setIsPopupOpen(true);
       } else {
@@ -90,11 +99,24 @@ const Calculator = ({setIsPopupOpen}) => {
               <input className="calculator__radio visually-hidden" type="radio" value="automotive" id="automotive"></input>
             </div>
           </div>
-          {values !== null ? <Parameters isPropertyValid={isPropertyValid} setisPropertyValid={setisPropertyValid}/> : ``}
+          {values !== null ? <Parameters
+            isPropertyValid={isPropertyValid}
+            setisPropertyValid={setisPropertyValid}
+            property={property}
+            setProperty={setProperty}
+            fee={fee}
+            setFee={setFee}/> : ``}
         </div>
-        {values !== null && isPropertyValid ? <Result/> : ``}
+        {values !== null && isPropertyValid ? <Result
+          fee={fee}
+          setFee={setFee}
+          property={property}/> : ``}
       </div>
-      {isOpenAnApplication ? <Application isFormFieldFail={isFormFieldFail}/> : ``}
+      {isOpenAnApplication ? <Application
+        isFormFieldFail={isFormFieldFail}
+        applicationNumber={applicationNumber}
+        property={property}
+        fee={fee}/> : ``}
     </form>
   </section>;
 };

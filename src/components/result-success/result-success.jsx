@@ -5,8 +5,11 @@ import {getPhrase} from '../../utils/common';
 import {openApplication} from '../../store/action';
 import {Words} from '../../const';
 
-const ResultSuccess = ({monthlyPayment, necessaryIncome, interestRate}) => {
-  const amountOfCredit = useSelector((state) => state.LOCAL.amountOfCredit);
+const ResultSuccess = ({
+  monthlyPayment,
+  necessaryIncome,
+  interestRate,
+  amountOfCredit}) => {
   const values = useSelector((state) => state.LOCAL.values);
   const dispatch = useDispatch();
 
@@ -45,7 +48,8 @@ const ResultSuccess = ({monthlyPayment, necessaryIncome, interestRate}) => {
 ResultSuccess.propTypes = {
   monthlyPayment: PropTypes.number.isRequired,
   necessaryIncome: PropTypes.number.isRequired,
-  interestRate: PropTypes.number.isRequired
+  interestRate: PropTypes.number.isRequired,
+  amountOfCredit: PropTypes.number.isRequired
 };
 
 export default ResultSuccess;

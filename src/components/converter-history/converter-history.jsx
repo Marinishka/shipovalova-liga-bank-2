@@ -2,6 +2,7 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {resetTable} from '../../store/action';
 import dayjs from 'dayjs';
+import {RowsInTableConverterHistory, ScreenWidth} from '../../const';
 
 const ConverterHistory = () => {
 
@@ -10,9 +11,11 @@ const ConverterHistory = () => {
   const table = useSelector((state) => state.LOCAL.table);
 
   const getListValues = (values) => {
+    const windowInnerWidth = window.innerWidth;
+    const rows = windowInnerWidth >= ScreenWidth.TABLET ? RowsInTableConverterHistory.TABLET : RowsInTableConverterHistory.MOBILE;
     const subarray = [];
-    for (let i = 0; i < Math.ceil(values.length / 5); i++) {
-      subarray[i] = values.slice((i * 5), (i * 5) + 5);
+    for (let i = 0; i < Math.ceil(values.length / rows); i++) {
+      subarray[i] = values.slice((i * rows), (i * rows) + rows);
     }
     return subarray;
   };
@@ -26,8 +29,10 @@ const ConverterHistory = () => {
             {values.map((value, index) => {
               return <div key={`row-${dayjs(value.date).format(`DD-MM-YYYY`)}-${index}`} className="converter-history__row">
                 <span className="converter-history__date">{dayjs(value.date).format(`DD.MM.YYYY`)}</span>
-                <span className="converter-history__from">{value.valueInput} {value.valuteInput}</span>
-                <span className="converter-history__to">{value.valueOutput} {value.valuteOutput}</span>
+                <div className="converter-history__values">
+                  <span className="converter-history__from">{value.valueInput} {value.valuteInput}</span>
+                  <span className="converter-history__to">{value.valueOutput} {value.valuteOutput}</span>
+                </div>
               </div>;
             })}
           </div>)
