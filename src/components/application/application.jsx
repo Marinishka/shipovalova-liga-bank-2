@@ -5,12 +5,13 @@ import {changeEmail, changeName, changeTelephone} from '../../store/action';
 import {getPhrase} from '../../utils/common';
 import PropTypes from 'prop-types';
 
-const Application = ({isFormFieldFail}) => {
+const Application = ({
+  isFormFieldFail,
+  applicationNumber,
+  property,
+  fee}) => {
   const values = useSelector((state) => state.LOCAL.values);
-  const property = useSelector((state) => state.LOCAL.property);
-  const fee = useSelector((state) => state.LOCAL.fee);
   const term = useSelector((state) => state.LOCAL.term);
-  const applicationNumber = useSelector((state) => state.LOCAL.applicationNumber);
   const name = useSelector((state) => state.LOCAL.name);
   const telephone = useSelector((state) => state.LOCAL.telephone);
   const email = useSelector((state) => state.LOCAL.email);
@@ -131,7 +132,10 @@ const Application = ({isFormFieldFail}) => {
 };
 
 Application.propTypes = {
-  isFormFieldFail: PropTypes.bool.isRequired
+  isFormFieldFail: PropTypes.bool.isRequired,
+  applicationNumber: PropTypes.number.isRequired,
+  property: PropTypes.number.isRequired,
+  fee: PropTypes.number.isRequired
 };
 
 export default Application;

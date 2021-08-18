@@ -144,19 +144,26 @@ const ConverterForm = () => {
     <fieldset className="converter-form__group converter-form__group--i-have">
       <label className="converter-form__label">У меня есть</label>
       <div className="converter-form__wrapper">
-        <input className={`converter-form__input converter-form__input--i-have ${errorEl === `converter-form__input--i-have` ? `converter-form__input--invalid` : ``}`} type="number" min="1" defaultValue={valueValuteIHave} ref={inputIHave} onChange={(({target}) => {
-          if (target.value <= 0) {
-            setErrorEl(`converter-form__input--i-have`);
-            return;
-          }
-          setErrorEl(null);
-          setValueValuteIHave(target.value);
-          changeInput(target.value, valuteIHave, setValueValuteIWant, valuteIWant, inputIWant, activeDayValute);
-        })}></input>
-        <select className="converter-form__select converter-form__select-i-have" defaultValue={valuteIHave} onChange={(({target}) => {
-          setValuteIHave(target.value);
-          changeInput(valueValuteIHave, target.value, setValueValuteIWant, valuteIWant, inputIWant, activeDayValute);
-        })}>
+        <input className={`converter-form__input converter-form__input--i-have ${errorEl === `converter-form__input--i-have` ? `converter-form__input--invalid` : ``}`}
+          type="number"
+          min="1"
+          defaultValue={valueValuteIHave}
+          ref={inputIHave}
+          onChange={(({target}) => {
+            if (target.value <= 0) {
+              setErrorEl(`converter-form__input--i-have`);
+              return;
+            }
+            setErrorEl(null);
+            setValueValuteIHave(target.value);
+            changeInput(target.value, valuteIHave, setValueValuteIWant, valuteIWant, inputIWant, activeDayValute);
+          })}></input>
+        <select className="converter-form__select converter-form__select-i-have"
+          defaultValue={valuteIHave}
+          onChange={(({target}) => {
+            setValuteIHave(target.value);
+            changeInput(valueValuteIHave, target.value, setValueValuteIWant, valuteIWant, inputIWant, activeDayValute);
+          })}>
           {getOptions()}
         </select>
       </div>
@@ -164,31 +171,46 @@ const ConverterForm = () => {
     <fieldset className="converter-form__group converter-form__group--i-want">
       <label className="converter-form__label">Хочу приобрести</label>
       <div className="converter-form__wrapper">
-        <input className={`converter-form__input converter-form__input--i-want ${errorEl === `converter-form__input--i-want` ? `converter-form__input--invalid` : ``}`} type="number" min="1" defaultValue={valueValuteIWant} ref={inputIWant} onChange={({target}) => {
-          if (target.value <= 0) {
-            setErrorEl(`converter-form__input--i-want`);
-            return;
-          }
-          setErrorEl(null);
-          setValueValuteIWant(target.value);
-          changeInput(target.value, valuteIWant, setValueValuteIHave, valuteIHave, inputIHave, activeDayValute);
-        }}></input>
-        <select className="converter-form__select converter-form__select-i-want" defaultValue={valuteIWant} onChange={(({target}) => {
-          setValuteIWant(target.value);
-          changeInput(valueValuteIWant, target.value, setValueValuteIHave, valuteIHave, inputIHave, activeDayValute);
-        })}>
+        <input className={`converter-form__input converter-form__input--i-want ${errorEl === `converter-form__input--i-want` ? `converter-form__input--invalid` : ``}`}
+          type="number"
+          min="1"
+          defaultValue={valueValuteIWant}
+          ref={inputIWant}
+          onChange={({target}) => {
+            if (target.value <= 0) {
+              setErrorEl(`converter-form__input--i-want`);
+              return;
+            }
+            setErrorEl(null);
+            setValueValuteIWant(target.value);
+            changeInput(target.value, valuteIWant, setValueValuteIHave, valuteIHave, inputIHave, activeDayValute);
+          }}></input>
+        <select className="converter-form__select converter-form__select-i-want"
+          defaultValue={valuteIWant}
+          onChange={(({target}) => {
+            setValuteIWant(target.value);
+            changeInput(valueValuteIWant, target.value, setValueValuteIHave, valuteIHave, inputIHave, activeDayValute);
+          })}>
           {getOptions()}
         </select>
       </div>
     </fieldset>
-    <input className="converter-form__input converter-form__input--date" type="date" min={getLastDay()} max={maxDay} defaultValue={getDefaultDate()} onChange = {(({target}) => {
-      setActiveDate(target.value);
-      changeValuteDate(target.value);
-      changeInput(valueValuteIHave, valuteIHave, setValueValuteIWant, valuteIWant, inputIWant, getValuteDay(target.value));
-    })}></input>
-    <button className="converter-form__submit button" disabled={errorEl ? true : false} type="button" onClick={() => {
-      dispatch(addValueInTable(activeDate, valueValuteIHave, valuteIHave, valueValuteIWant, valuteIWant));
-    }}>Сохранить результат</button>
+    <input className="converter-form__input converter-form__input--date"
+      type="date"
+      min={getLastDay()}
+      max={maxDay}
+      defaultValue={getDefaultDate()}
+      onChange = {(({target}) => {
+        setActiveDate(target.value);
+        changeValuteDate(target.value);
+        changeInput(valueValuteIHave, valuteIHave, setValueValuteIWant, valuteIWant, inputIWant, getValuteDay(target.value));
+      })}></input>
+    <button className="converter-form__submit button"
+      disabled={errorEl ? true : false}
+      type="button"
+      onClick={() => {
+        dispatch(addValueInTable(activeDate, valueValuteIHave, valuteIHave, valueValuteIWant, valuteIWant));
+      }}>Сохранить результат</button>
   </form>;
 };
 

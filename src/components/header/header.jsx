@@ -1,27 +1,28 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Link, useLocation} from 'react-router-dom';
 import login from './../../assets/img/icons/icon-login.svg';
 import {IconLogin, ImgLogo, NavigationItems, Routes, ScreenWidth} from './../../const.js';
 
-const Header = ({isModalOpened, setIsModalOpened, setIsNavOpen}) => {
+const Header = ({isModalOpen, setIsModalOpen, setIsNavOpen}) => {
   const headerNavList = useRef(null);
   const headerNav = useRef(null);
   const close = useRef(null);
   const headerContainer = useRef(null);
+  const header = useRef(null);
   const location = useLocation().pathname;
 
   const getLogo = () => {
     return location === Routes.MAIN
       ? <picture className="header__link-logo">
-        <source media={`(min-width: ${ScreenWidth.TABLET})`} srcSet="./img/logo-tablet.png"></source>
-        <source media={`(min-width: ${ScreenWidth.DESKTOP})`} srcSet="./img/logo-desktop.png"></source>
+        <source media={`(min-width: ${ScreenWidth.TABLET}px)`} srcSet="./img/logo-tablet.png"></source>
+        <source media={`(min-width: ${ScreenWidth.DESKTOP}px)`} srcSet="./img/logo-desktop.png"></source>
         <img className="header__logo" width={ImgLogo.WIDTH} height={ImgLogo.HEIGHT} src="./img/logo-mobile.png" alt={ImgLogo.ALT}></img>
       </picture>
       : <Link className="header__link-logo" to={Routes.MAIN}>
         <picture>
-          <source media={`(min-width: ${ScreenWidth.TABLET})`} srcSet="./img/logo-tablet.png"></source>
-          <source media={`(min-width: ${ScreenWidth.DESKTOP})`} srcSet="./img/logo-desktop.png"></source>
+          <source media={`(min-width: ${ScreenWidth.TABLET}px)`} srcSet="./img/logo-tablet.png"></source>
+          <source media={`(min-width: ${ScreenWidth.DESKTOP}px)`} srcSet="./img/logo-desktop.png"></source>
           <img className="header__logo" width={ImgLogo.WIDTH} height={ImgLogo.HEIGHT} src="./img/logo-mobile.png" alt={ImgLogo.ALT}></img>
         </picture>
       </Link>;
@@ -40,6 +41,7 @@ const Header = ({isModalOpened, setIsModalOpened, setIsNavOpen}) => {
     headerContainer.current.classList.add(`header__container--open`);
     headerNavList.current.classList.add(`header-nav-list--visible`);
     headerNav.current.classList.add(`header-nav--open`);
+    header.current.classList.add(`header--open`);
     close.current.classList.add(`header__close--visible`);
   };
 
@@ -48,6 +50,7 @@ const Header = ({isModalOpened, setIsModalOpened, setIsNavOpen}) => {
     headerContainer.current.classList.remove(`header__container--open`);
     headerNavList.current.classList.remove(`header-nav-list--visible`);
     headerNav.current.classList.remove(`header-nav--open`);
+    header.current.classList.remove(`header--open`);
     close.current.classList.remove(`header__close--visible`);
   };
 
@@ -57,11 +60,15 @@ const Header = ({isModalOpened, setIsModalOpened, setIsNavOpen}) => {
 
   const onLoginClick = (evt) => {
     evt.preventDefault();
-    setIsModalOpened(!isModalOpened);
+    setIsModalOpen(!isModalOpen);
     closeNav();
   };
 
-  return <header className={`header ${isModalOpened ? `display--none` : ``}`}>
+  useEffect(() => {
+    closeNav();
+  }, [location]);
+
+  return <header ref={header} className={`header ${isModalOpen ? `display--none` : ``}`}>
     <div className="header__container container" ref={headerContainer}>
       <div className="header__logo-container">
         {getLogo()}
@@ -84,8 +91,8 @@ const Header = ({isModalOpened, setIsModalOpened, setIsNavOpen}) => {
 };
 
 Header.propTypes = {
-  isModalOpened: PropTypes.bool.isRequired,
-  setIsModalOpened: PropTypes.func.isRequired,
+  isModalOpen: PropTypes.bool.isRequired,
+  setIsModalOpen: PropTypes.func.isRequired,
   setIsNavOpen: PropTypes.func.isRequired
 };
 

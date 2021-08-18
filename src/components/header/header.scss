@@ -2,6 +2,11 @@
   background-color: $bg-block;
 }
 
+.header--open {
+  min-height: 100vh;
+  height: 100%;
+}
+
 .header__container {
   position: relative;
 

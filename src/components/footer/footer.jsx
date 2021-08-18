@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {NavigationItems, ScreenWidth} from './../../const.js';
 
-const Footer = ({isModalOpened, isNavOpen}) => {
+const Footer = ({isModalOpen, isNavOpen}) => {
 
   const getNavItems = () => {
     return Object.keys(NavigationItems.FOOTER).map((item) => {
@@ -13,14 +13,14 @@ const Footer = ({isModalOpened, isNavOpen}) => {
     });
   };
 
-  return <footer className={`footer ${isModalOpened || isNavOpen ? `display--none` : ``}`}>
+  return <footer className={`footer ${isModalOpen || isNavOpen ? `display--none` : ``}`}>
     <div className="footer__container container">
       <div className="footer__column footer__column--left">
         <div className="footer__logo">
           <a className="footer__link-logo" href="/">
             <picture>
-              <source media={`(min-width: ${ScreenWidth.TABLET})`} srcSet="./img/logo-tablet.png"></source>
-              <source media={`(min-width: ${ScreenWidth.DESKTOP})`} srcSet="./img/logo-desktop.png"></source>
+              <source media={`(min-width: ${ScreenWidth.TABLET}px)`} srcSet="./img/logo-tablet.png"></source>
+              <source media={`(min-width: ${ScreenWidth.DESKTOP}px)`} srcSet="./img/logo-desktop.png"></source>
               <img className="footer__img" width="115" height="17" src="./img/logo-mobile-footer.png" alt="Логотип Лига Банк"></img>
             </picture>
           </a>
@@ -83,7 +83,7 @@ const Footer = ({isModalOpened, isNavOpen}) => {
 };
 
 Footer.propTypes = {
-  isModalOpened: PropTypes.bool.isRequired,
+  isModalOpen: PropTypes.bool.isRequired,
   isNavOpen: PropTypes.bool.isRequired
 };
 

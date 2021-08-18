@@ -1,23 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import PropTypes from 'prop-types';
 import {MATERNAL_CAPITAL} from '../../const';
-import {changeAmountOfCredit, changeSatisfyingParameters, openApplication} from '../../store/action';
+import {openApplication} from '../../store/action';
 import ResultFail from '../result-fail/result-fail';
 import ResultSuccess from '../result-success/result-success';
 
-const Result = () => {
-  const property = useSelector((state) => state.LOCAL.property);
+const Result = ({fee, property}) => {
   const values = useSelector((state) => state.LOCAL.values);
-  const fee = useSelector((state) => state.LOCAL.fee);
   const isMaternalCapital = useSelector((state) => state.LOCAL.isMaternalCapital);
   const isCasco = useSelector((state) => state.LOCAL.isCasco);
   const isLifeInsurance = useSelector((state) => state.LOCAL.isLifeInsurance);
   const term = useSelector((state) => state.LOCAL.term);
-  const amountOfCredit = useSelector((state) => state.LOCAL.amountOfCredit);
 
   const [interestRate, setInterestRate] = useState(0);
   const [monthlyPayment, setMonthlyPayment] = useState(0);
   const [necessaryIncome, setNecessaryIncome] = useState(0);
+  const [amountOfCredit, setAmountOfCredit] = useState(0);
+  const [isParametersSatisfying, setParametersSatisfying] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -57,38 +57,51 @@ const Result = () => {
     setNecessaryIncome(Math.ceil(monthlyPay / 0.45));
   };
 
-  const getMonthlyPayment = () => {
+  const getMaternalCapital = (value) => {
     let maternalCapital = 0;
-    if (values.VALUE === `mortgage`) {
+    if (value === `mortgage`) {
       if (isMaternalCapital) {
         maternalCapital = MATERNAL_CAPITAL;
       }
     }
-    dispatch(changeAmountOfCredit(Math.ceil(property - fee - maternalCapital)));
-    const monthlyInterestRate = getInterestRate() * 0.01 / 12;
-    const result = Math.ceil((property - fee - maternalCapital) * (monthlyInterestRate + monthlyInterestRate / (Math.pow((1 + monthlyInterestRate), getTermInMounth()) - 1)));
-    getNecessaryIncome(result);
-    return result;
+    return maternalCapital;
   };
 
-  const getIsParametersSatisfying = () => {
-    const result = amountOfCredit > values.MIN_CREDIT;
-    dispatch(changeSatisfyingParameters(result));
-    if (!result) {
-      dispatch(openApplication(false));
-    }
-    return result;
+  const getAmountOfCredit = () => {
+    return Math.ceil(property - fee - getMaternalCapital(values.VALUE));
+  };
+
+  const getMonthlyPayment = (amountOfCreditValue) => {
+    const monthlyInterestRate = getInterestRate() * 0.01 / 12;
+    return Math.ceil(amountOfCreditValue * (monthlyInterestRate + monthlyInterestRate / (Math.pow((1 + monthlyInterestRate), getTermInMounth()) - 1)));
   };
 
   useEffect(() => {
-    setMonthlyPayment(getMonthlyPayment());
-  }, [fee, term, isCasco, isLifeInsurance, values, isMaternalCapital]);
+    const amountOfCreditValue = getAmountOfCredit();
+    setAmountOfCredit(amountOfCreditValue);
+    const monthlyPaymentValue = getMonthlyPayment(amountOfCreditValue);
+    setMonthlyPayment(monthlyPaymentValue);
+    getNecessaryIncome(monthlyPaymentValue);
+    const result = amountOfCreditValue > values.MIN_CREDIT;
+    setParametersSatisfying(result);
+    if (!result) {
+      dispatch(openApplication(false));
+    }
+  }, [term, isCasco, isLifeInsurance, values, isMaternalCapital, fee]);
 
   return <section className="result">
-    {getIsParametersSatisfying() ?
-      <ResultSuccess monthlyPayment={monthlyPayment} necessaryIncome={necessaryIncome} interestRate={interestRate}/> :
+    {isParametersSatisfying ?
+      <ResultSuccess monthlyPayment={monthlyPayment}
+        necessaryIncome={necessaryIncome}
+        interestRate={interestRate}
+        amountOfCredit={amountOfCredit}/> :
       <ResultFail/>}
   </section>;
+};
+
+Result.propTypes = {
+  fee: PropTypes.number.isRequired,
+  property: PropTypes.number.isRequired
 };
 
 export default Result;

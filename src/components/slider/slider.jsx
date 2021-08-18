@@ -53,7 +53,7 @@ const Slider = () => {
         <div className="slider__wrapper">
           <h2 className="slider__title">Лига банк</h2>
           <p className="slider__text">Всегда рядом</p>
-          <HashLink className="slider__link" to="/calculator#map">Найти отделение</HashLink>
+          <HashLink className="slider__link" to="#map">Найти отделение</HashLink>
         </div>
       </li>
     </ul>

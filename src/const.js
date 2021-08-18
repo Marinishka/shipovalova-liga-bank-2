@@ -1,7 +1,12 @@
 export const ScreenWidth = {
-  MOBILE: `320px`,
-  TABLET: `768px`,
-  DESKTOP: `1024px`
+  MOBILE: 320,
+  TABLET: 768,
+  DESKTOP: 1024
+};
+
+export const RowsInTableConverterHistory = {
+  MOBILE: 10,
+  TABLET: 5
 };
 
 export const Purposes = {
@@ -42,11 +47,11 @@ export const Values = {
     VALUE: `mortgage`,
     TITLE: `Стоимость недвижимости`,
     PRICE: {
-      MIN: `1200000`,
-      MAX: `25000000`,
-      STEP: `100000`
+      MIN: 1200000,
+      MAX: 25000000,
+      STEP: 100000
     },
-    MIN_PERCENT: `10`,
+    MIN_PERCENT: 10,
     MIN_CREDIT: 500000,
     INTEREST_RATE: {
       FEE: 15,
@@ -58,11 +63,11 @@ export const Values = {
     VALUE: `automotive`,
     TITLE: `Стоимость автомобиля`,
     PRICE: {
-      MIN: `500000`,
-      MAX: `5000000`,
-      STEP: `50000`
+      MIN: 500000,
+      MAX: 5000000,
+      STEP: 50000
     },
-    MIN_PERCENT: `20`,
+    MIN_PERCENT: 20,
     MIN_CREDIT: 200000,
     INTEREST_RATE: {
       CASCO_AND_LIFE_INSURANCE: 3.5,
@@ -77,16 +82,12 @@ export const Values = {
 export const MATERNAL_CAPITAL = 470000;
 
 export const InitialState = {
-  purpose: `initial`,
   values: null,
-  property: 0,
-  fee: 0,
   isMaternalCapital: false,
   isCasco: false,
   isLifeInsurance: false,
   percent: 0,
-  term: 5,
-  amountOfCredit: 0,
+  term: 5
 };
 
 export const Coordinates = {
