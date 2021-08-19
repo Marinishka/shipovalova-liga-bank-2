@@ -12,11 +12,11 @@
 
 Проекты созданы на основе create-react-app с использованием:
 1) методологии БЭМ,
-2) препроцессора sass,
-3) фреймворка React,
-4) библиотеки React Redux,
-5) библиотеки React Router,
-6) сеток на основе grid и flex.
+2) Sass,
+3) React,
+4) React Redux,
+5) React Router,
+6) grid и flex.
 
 # Getting Started with Create React App
 
