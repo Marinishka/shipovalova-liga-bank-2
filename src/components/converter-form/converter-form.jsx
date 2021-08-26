@@ -142,9 +142,10 @@ const ConverterForm = () => {
 
   return <form className="converter__form converter-form" disabled={isLoading}>
     <fieldset className="converter-form__group converter-form__group--i-have">
-      <label className="converter-form__label">У меня есть</label>
+      <label className="converter-form__label" htmlFor="i have">У меня есть</label>
       <div className="converter-form__wrapper">
         <input className={`converter-form__input converter-form__input--i-have ${errorEl === `converter-form__input--i-have` ? `converter-form__input--invalid` : ``}`}
+          id="i have"
           type="number"
           min="1"
           defaultValue={valueValuteIHave}
@@ -160,6 +161,7 @@ const ConverterForm = () => {
           })}></input>
         <select className="converter-form__select converter-form__select-i-have"
           defaultValue={valuteIHave}
+          aria-label="У меня есть сумма в валюте"
           onChange={(({target}) => {
             setValuteIHave(target.value);
             changeInput(valueValuteIHave, target.value, setValueValuteIWant, valuteIWant, inputIWant, activeDayValute);
@@ -169,9 +171,10 @@ const ConverterForm = () => {
       </div>
     </fieldset>
     <fieldset className="converter-form__group converter-form__group--i-want">
-      <label className="converter-form__label">Хочу приобрести</label>
+      <label className="converter-form__label" htmlFor="i want">Хочу приобрести</label>
       <div className="converter-form__wrapper">
         <input className={`converter-form__input converter-form__input--i-want ${errorEl === `converter-form__input--i-want` ? `converter-form__input--invalid` : ``}`}
+          id="i want"
           type="number"
           min="1"
           defaultValue={valueValuteIWant}
@@ -186,6 +189,7 @@ const ConverterForm = () => {
             changeInput(target.value, valuteIWant, setValueValuteIHave, valuteIHave, inputIHave, activeDayValute);
           }}></input>
         <select className="converter-form__select converter-form__select-i-want"
+          aria-label="Хочу приобрести валюту"
           defaultValue={valuteIWant}
           onChange={(({target}) => {
             setValuteIWant(target.value);
@@ -196,6 +200,7 @@ const ConverterForm = () => {
       </div>
     </fieldset>
     <input className="converter-form__input converter-form__input--date"
+      aria-label="Дата конвертации"
       type="date"
       min={getLastDay()}
       max={maxDay}
