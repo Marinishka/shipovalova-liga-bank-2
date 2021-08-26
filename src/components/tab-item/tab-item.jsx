@@ -36,7 +36,7 @@ const TabItem = ({tabTitle, isTabActive}) => {
       className={`tabs__btn tabs__btn--${tabTitleLowerCase} ${isTabActive ? `tabs__btn--active` : ``}`}
       onClick={(evt) => evt.preventDefault()}
       type="button"
-      aria-label="Переключиться на таб">
+      aria-label={`Переключиться на таб ${tabTitle}`}>
       {getIcon(tabTitle, tabTitleLowerCase)}
       <span data-tab={tabTitleLowerCase} className="tabs__title">{tabTitle}</span>
     </button>
